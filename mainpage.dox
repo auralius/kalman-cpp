@@ -1,0 +1,166 @@
+/*!
+\mainpage kalman-cpp
+
+\section linear-kalman Kalman filter for a linear system
+\subsection definition_kf Definition
+
+A linear system is described by:
+\f[x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}\f]
+\f[z_k = Hx_k + w_k\f]
+where:\n
+\f$v\f$ is the process noise (Gaussian with covariance Q)\n  
+\f$w\f$ is the measurement noise (Gaussian with covariance R)\n 
+\f$A\f$ is the system matrix\n
+\f$B\f$ is the input matrix\n
+\f$H\f$ is the output matrix\n
+\f$x\f$ is the state vector\n
+\f$z\f$ is the output vector\n
+\f$u\f$ is the input vector\n\n
+The noise covariance matrices must follow these conditions:\n
+\f[Q = Q^T\f]
+\f[R = R^T\f]
+
+\subsection example_kf Example
+
+An example provided in main1.cpp solves
+<a href="http://www.mathworks.com/matlabcentral/fileexchange/18465-learning-the-kalman-filter-in-simulink-v2-1/content/html/runkalmanfilter.html">the car voltmeter problem</a> using this library. 
+The system model for this problem is governed by: 
+
+\f[x_k = 12 + v_{k-1}\f]
+\f[z_k = x_k + w_ḳ\f]
+
+Therefore, we can summarize:  \f$A = 0\f$, \f$B = 1\f$, \f$H = 1\f$, \f$u = 12\f$, \f$x_0 = 12\f$, \f$Q=4\f$, and \f$R=4\f$. 
+These values are the put into the following lines of codes.
+
+\code{.cpp}
+mat A(1,1), B(1,1), H(1,1), Q(1,1), R(1,1);
+colvec u(1);  
+
+A << 0;
+B << 1;
+Q << 4;
+H << 1;
+R << 4;
+u << 12.0;
+\endcode
+
+The first line of the code above is used to create all necessary matrices with correct dimensions. 
+All matrix operations use the Armadillo library. 
+Please refer to the Armadillo documentation on how to create a matrix and set its element values.
+The next step is to create an instance of class KF and initialize it with the newly created 
+\f$A\f$, \f$B\f$, \f$Q\f$, \f$H\f$, and \f$R\f$. 
+
+\code{.cpp}
+KF kalman;
+kalman.InitSystem(A, B, H, Q, R);
+\endcode
+
+The last step is to run the Kalman iteratively as shown in the codes below.
+
+\code{.cpp}
+for (int k = 0; k < 100; k++) {
+  kalman.Kalmanf(u);
+  
+  /* The rest of the code ... */
+}
+\endcode
+
+@image HTML ../images/ex1.png
+
+\section non-linear-kalman Extended Kalman filter for a nonlinear system
+\subsection definition_ekf Definition
+
+A non-linear system is described by:
+\f[x_k = f(x_{k-1}, u_{k-1}, k) + v_{k-1}\f]
+\f[z_k = h(x_k, u_k, k) + w_k\f]
+where:\n 
+\f$f\f$ is the dynamic model of the system\n
+\f$h\f$ is the measurement model of the system\n
+\f$v\f$ is the process noise (Gaussian with covariance Q)\n  
+\f$w\f$ is the measurement noise (Gaussian with covariance R)\n 
+\f$x\f$ is the state vector\n
+\f$z\f$ is the output vector\n
+\f$u\f$ is the input vector\n\n
+The noise covariance matrices must follow these conditions:\n
+\f[Q = Q^T\f]
+\f[R = R^T\f]
+
+\subsection example_ekf Example
+ Here, main4.cpp is taken as an example which is adapted from this  
+ <a href="http://ch.mathworks.com/matlabcentral/fileexchange/38302-kalman-filter-package/content//Kalman%20Filter%20Package/Examples/ExtendedKalmanFilterDemo.m">MATLAB Central page.</a> 
+ The nonlinear system is described as:
+
+\f[ f = \begin{bmatrix} sin(x_2(k-1))(k-1) \\ x_2(k-1) \end{bmatrix} \f]
+\f[ h = \begin{bmatrix} x_1(k) \\ x_2(k) \end{bmatrix} \f]
+\f[ x_0 = \begin{bmatrix} 0 \\ \frac{1 \pi}{500} \end{bmatrix}\f]
+
+Class EKF needs to be derived to allow flexible implementation of the dynamic model and the measurement model of the system .
+
+\code{.cpp}
+class MyEKF: public EKF
+{
+public:  
+  virtual colvec f(const colvec& x, const colvec& u, const int k) {
+    colvec xk(nOutputs_);
+    xk(0) = sin(x(1) * k);
+    xk(1) = x(1);
+    return xk;
+  }
+  
+  virtual colvec h(const colvec& x, const colvec& u, const int k) {
+    colvec zk(nOutputs_);
+    zk(0) = x(0);
+    zk(1) = x(1);
+    return zk;
+  }
+};
+\endcode
+
+The following steps are similiar with the previous example as in the linear Kalman filter. 
+We start by defining the number of states and outputs, then followed by creating matrix Q and R.
+An instance of class EKF is created afterward and the states are initialized.
+
+\code{.cpp}
+int n_states = 2;
+int n_outputs = 2;
+mat Q(2, 2);
+mat R(2, 2);
+
+Q << 0.001 << 0    << endr
+  << 0     << 0    << endr;
+
+R << 0.1   << 0    << endr
+  <<   0   << 0.01 << endr;
+
+colvec x0(2);
+x0 << 0 << 3 * M_PI / 500;
+
+colvec u;
+
+// No inputs
+u = u.zeros(); 
+
+MyEKF myekf;
+myekf.InitSystem(n_states, n_outputs, Q, R);
+myekf.InitSystemState(x0);
+
+for (int k = 0; k < 1000; k ++) {
+  myekf.EKalmanf(u, k);
+
+  colvec *x = myekf.GetCurentState();
+  colvec *x_m = myekf.GetCurentEstimatedState();
+  colvec *z = myekf.GetCurentOutput();
+ 
+  /* The resst of the code ... */
+}
+\endcode
+
+@image HTML ../images/ex4.png
+
+\section practical-application Practical application: Using Kalman filter to smoothen measurement data 
+
+@image HTML ../images/Kalman_concept1.jpg
+@image HTML ../images/Kalman_concept2.jpg
+
+  
+*/
