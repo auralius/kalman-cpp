@@ -16,12 +16,6 @@
   $(document).ready(initResizable);
   $(window).load(resizeHeight);
 </script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    extensions: ["tex2jax.js"],
-    jax: ["input/TeX","output/HTML-CSS"],
-});
-</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -80,7 +74,7 @@ $(document).ready(function(){initNavTree('ekf_8h.html','');});
 
 <p>Header file for the extended Kalman filter implementation, for a nonlinear system.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;cmath&gt;</code><br />
+<div class="textblock"><code>#include &lt;math.h&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;armadillo&gt;</code><br />
 </div>
@@ -104,19 +98,19 @@ Macros</h2></td></tr>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
 <p>Define a non-linear discrete-time process: </p><p class="formulaDsp">
-\[x_k = f(x_{k-1}, u_{k-1}, k) + v_{k-1}\]
+<img class="formulaDsp" alt="\[x_k = f(x_{k-1}, u_{k-1}, k) + v_{k-1}\]" src="form_4.png"/>
 </p>
  <p class="formulaDsp">
-\[z_k = h(x_k, u_k, k) + w_k\]
+<img class="formulaDsp" alt="\[z_k = h(x_k, u_k, k) + w_k\]" src="form_5.png"/>
 </p>
 <p> where:<br />
- \(f\) is the dynamic model of the system<br />
- \(h\) is the measurement model of the system<br />
- \(v\) is the process noise (Gaussian with covariance Q)<br />
- \(w\) is the measurement noise (Gaussian with covariance R)<br />
- \(x\) is the state vector<br />
- \(z\) is the output vector<br />
- \(u\) is the input vector<br />
+ <img class="formulaInl" alt="$f$" src="form_6.png"/> is the dynamic model of the system<br />
+ <img class="formulaInl" alt="$h$" src="form_7.png"/> is the measurement model of the system<br />
+ <img class="formulaInl" alt="$v$" src="form_8.png"/> is the process noise (Gaussian with covariance Q)<br />
+ <img class="formulaInl" alt="$w$" src="form_9.png"/> is the measurement noise (Gaussian with covariance R)<br />
+ <img class="formulaInl" alt="$x$" src="form_0.png"/> is the state vector<br />
+ <img class="formulaInl" alt="$z$" src="form_10.png"/> is the output vector<br />
+ <img class="formulaInl" alt="$u$" src="form_11.png"/> is the input vector<br />
 </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a525335710b53cb064ca56b936120431e"></a>
@@ -137,7 +131,7 @@ DESCRIPTION</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc133b73f91f0e3b4287924ed00a2a00.html">kalman</a></li><li class="navelem"><a class="el" href="ekf_8h.html">ekf.h</a></li>
-    <li class="footer">Generated on Sun Jan 15 2017 21:39:20 for kalman-cpp by
+    <li class="footer">Generated on Sun Jan 15 2017 22:27:38 for kalman-cpp by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>
