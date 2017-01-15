@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="kalman-cpp"
-	ProjectGUID="{C7B2DEE4-88B9-4146-BFF1-A80462A0C3DF}"
-	RootNamespace="kalman-cpp"
+	Name="demo3"
+	ProjectGUID="{1EC65CCD-AA45-41CD-B1D5-6DD442821981}"
+	RootNamespace="demo2"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -20,7 +20,7 @@
 			Name="Debug|Win32"
 			OutputDirectory="..\bin"
 			IntermediateDirectory="$(ConfigurationName)_$(ProjectName)"
-			ConfigurationType="4"
+			ConfigurationType="1"
 			CharacterSet="1"
 			BuildLogFile="$(IntDir)\BuildLog_$(ProjectName).htm"
 			>
@@ -42,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\windows-libs\armadillo-3.2.4\include"
+				AdditionalIncludeDirectories="..\kalman; ..\windows-libs\armadillo-3.2.4\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -62,11 +62,21 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\$(ProjectName)_d.lib"
+				Name="VCLinkerTool"
+				AdditionalDependencies="kalman-cpp_d.lib blas_win32_MT.lib lapack_win32_MT.lib"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\windows-libs\lapack; ..\bin"
+				ManifestFile="$(IntDir)\$(TargetFileName)$(ProjectName).intermediate.manifest"
+				GenerateDebugInformation="true"
+				SubSystem="1"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+				DependencyInformationFile="$(IntDir)\$(TargetFileName).mt.dep"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -78,6 +88,9 @@
 				Name="VCFxCopTool"
 			/>
 			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
@@ -85,7 +98,7 @@
 			Name="Release|Win32"
 			OutputDirectory="..\bin"
 			IntermediateDirectory="$(ConfigurationName)_$(ProjectName)"
-			ConfigurationType="4"
+			ConfigurationType="1"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			BuildLogFile="$(IntDir)\BuildLog_$(ProjectName).htm"
@@ -109,7 +122,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\windows-libs\armadillo-3.2.4\include"
+				AdditionalIncludeDirectories="..\kalman; ..\windows-libs\armadillo-3.2.4\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -128,10 +141,23 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				AdditionalDependencies="kalman-cpp.lib blas_win32_MT.lib lapack_win32_MT.lib"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="..\windows-libs\lapack; ..\bin"
+				ManifestFile="$(IntDir)\$(TargetFileName).intermediate.manifest"
+				GenerateDebugInformation="true"
+				SubSystem="1"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+				DependencyInformationFile="$(IntDir)\$(TargetFileName).mt.dep"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -141,6 +167,9 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -156,11 +185,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\kalman\ekf.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\kalman\kf.cpp"
+				RelativePath="..\samples\main3.cpp"
 				>
 			</File>
 		</Filter>
@@ -169,14 +194,6 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath="..\kalman\ekf.h"
-				>
-			</File>
-			<File
-				RelativePath="..\kalman\kf.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
