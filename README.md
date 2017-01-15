@@ -26,3 +26,5 @@ Please install [Armadillo](http://arma.sourceforge.net), take it from your distr
 ## MATLAB m-files for plotting
 
 MATLAB m-files for each example are provided in 'm-files' folder. Octave can also be used instead of MATLAB.
+
+See documentation [here](docs/html/index.html)

@@ -157,10 +157,38 @@ for (int k = 0; k < 1000; k ++) {
 
 @image HTML ../images/ex4.png
 
-\section practical-application Practical application: Using Kalman filter to smoothen measurement data 
+\section practical-application Practical application: Using Kalman filter for smoothing noisy measurement data 
+
+The examples we have so far are theoritical. Very often what we would like to do is simply to 
+reduce noise from preacquired measurement data. There are several reason why we want to use Kalman filter. 
+For example, the noise has very wide spectrum, thus, using frequency based filter hurts the data.
+
+In principal, there are 2 scenarios of using the Kalman filter.
+The first scenario is by first simulating the system as shown in the figure below.  
+In this scenario, we only need to supply \f$u_k\f$ to the Kalman filter function. 
+The Kalman filter will give us 4 outputs: \f$x_k\f$, \f$z_k\f$, \f$\hat{x}_k\f$, and \f$\hat{z}_k\f$.
+\f$x_k\f$ and \f$z_k\f$ are called the true system states and the true system outputs, respectvely. They are noisy.
+\f$\hat{x}_k\f$, and \f$\hat{z}_k\f$ are called the estimated system states and the estimated system outputs, respectively. 
+They are filtered.
+
+The function prototype for this scenario can be written as:
+[\f$x_k\f$, \f$z_k\f$, \f$\hat{x}_k\f$, \f$\hat{z}_k\f$] = function kalmanf( \f$u_k\f$)
 
 @image HTML ../images/Kalman_concept1.jpg
+
+The second scenario is used when the measurements are availble. 
+Thus, simulating the system becomes unnecessary. 
+In this scenario, we need to supply \f$z_k\f$ and \f$u_k\f$ to the kalman filter function. 
+The Kalman filter will give us 2 outputs: \f$\hat{x}_k\f$ (the estimated system sates) and \f$\hat{z}_k\f$ (the estimated system outputs).
+
+The function prototype for this scenario can be written as:
+[\f$\hat{x}_k\f$, \f$\hat{z}_k\f$] = function kalmanf( \f$z_k\f$,  \f$u_k\f$)
+
 @image HTML ../images/Kalman_concept2.jpg
+
+The second scenario is useful for smoothing noisy measurment data. However, both scenarios are availabe in this library. 
+
+\subsection practical_example Example
 
   
 */
