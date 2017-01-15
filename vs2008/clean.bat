@@ -7,5 +7,7 @@ del *.ilk
 del *.txt
 del *.exp
 del *.suo
-rmdir /S /Q Debug
-rmdir /S /Q Release
+
+for /f %%i in ('dir /a:d /s /b Debug*') do rd /S /Q %%i
+
+for /f %%i in ('dir /a:d /s /b Release*') do rd /S /Q %%i
