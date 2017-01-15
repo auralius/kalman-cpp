@@ -1,4 +1,9 @@
 del *.exe
-del *.exp
-del *.lib
+del *.user
+del *.ncb
 del *.pdb
+del *.lib
+del *.ilk
+del *.txt
+del *.exp
+del *.suo
