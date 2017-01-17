@@ -39,36 +39,3 @@ xlabel('# iterations');
 ylabel('z');
 
 legend('measurement', 'estimate');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-legend('true', 'estimate');
