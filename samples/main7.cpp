@@ -46,18 +46,18 @@ int main(int argc, char** argv)
         
       // Assume we have a noisy signal that is acquired from a measurement tool
       double w = 2; // Stdev of the noise, in reality we don't know this
-      colvec z_measurment(1);
-      z_measurment.randn(1);
-      z_measurment = z_measurment * w + 12.0;
+      colvec z_measurement(1);
+      z_measurement.randn(1);
+      z_measurement = z_measurement * w + 12.0;
       
       // Put the z_measurment to the Kalman filter
-      kalman.Kalmanf(z_measurment, u);
+      kalman.Kalmanf(z_measurement, u);
       
       colvec *z_m = kalman.GetCurrentEstimatedOutput();
       colvec *x_m = kalman.GetCurrentEstimatedState();
       
       k_plot.at(k) = k;
-      noisy_plot.at(k) =  z_measurment.at(0,0);
+      noisy_plot.at(k) =  z_measurement.at(0,0);
       smooth_plot.at(k) = z_m->at(0,0);
     }
     
