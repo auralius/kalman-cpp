@@ -190,6 +190,89 @@ The second scenario is useful for smoothing noisy measurment data. However, both
 
 \subsection practical_example Example
 
-Coming soon...
+As an example, we will take the problem in main1.cpp. 
+This time, however, we assume we already had several noisy data points from measurements.
+Therfore, we will not need the Kalman procedure to simulate the system.
+
+The system model can be formulated into:
+
+\f[x_k = x_{k-1} + v_{k-1}\f]
+\f[z_k = x_k + w_ḳ\f]
+
+We then generate random number as the prerecorded noisy data (**z_measurement**), as the following:
+
+\code{.cpp}
+// Assume we have a noisy signal that is acquired from a measurement tool
+double w = 2; // Stdev of the noise, in reality we don't know this
+colvec z_measurement(1);
+z_measurement.randn(1);
+z_measurement = z_measurement * w + 12.0;
+\endcode
+
+After than, **z_measurement** is then sent to the Kalman filter function, as the following:
+
+\code{.cpp}
+// Put the z_measurment to the Kalman filter
+kalman.Kalmanf(z_measurement, u);
+
+colvec *z_m = kalman.GetCurrentEstimatedOutput();
+colvec *x_m = kalman.GetCurrentEstimatedState();
+\endcode
+
+The **kalman.Kalmanf(z_measurement, u)** function above has different parameters with what we can find in main1.cpp.
+Since **z_measurement** is available, we then send it as a parameter for the **kalmanf** function. 
+The processes above are done in several iterations according to the number of the availabe data points. 
+The final codes will look like as the following:
+
+\code{.cpp}
+int main(int argc, char** argv)
+{      
+   /*
+    * Define the system and initialize the Kalman filter
+    */
+    mat A(1,1), B(1,1), H(1,1), Q(1,1), R(1,1);
+    colvec u(1);
+    colvec x0(1);  
+
+    A << 1;
+    B << 1;
+    Q << 0.01; // Heuristic tuning parameter
+    H << 1;
+    R << 1;    // Heuristic tuning parameter
+    u << 0;
+
+    KF kalman;
+    kalman.InitSystem(A, B, H, Q, R);
+
+   /*
+    * For plotting with matplotlibcpp
+    */
+    int N = 500;
+    std::vector<double> k_plot(N), noisy_plot(500), smooth_plot(N);
+
+    for (int k = 0; k < N; k++) {
+        
+        // Assume we have a noisy signal that is acquired from a measurement tool
+        double w = 2; // Stdev of the noise, in reality we don't know this
+        colvec z_measurement(1);
+        z_measurement.randn(1);
+        z_measurement = z_measurement * w + 12.0;
+        
+        // Put the z_measurment to the Kalman filter
+        kalman.Kalmanf(z_measurement, u);
+        
+        colvec *z_m = kalman.GetCurrentEstimatedOutput();
+        colvec *x_m = kalman.GetCurrentEstimatedState();
+        
+        k_plot.at(k) = k;
+        noisy_plot.at(k) =  z_measurement.at(0,0);
+        smooth_plot.at(k) = z_m->at(0,0);
+    }
+}
+\endcode
+
+The values that are given to **Q** and **R** are defined **heuristically** since we do not know the actual variances of the noise of the data.
+
+@image HTML ../images/ex7.png
 
 */
