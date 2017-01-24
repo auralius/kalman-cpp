@@ -36,3 +36,4 @@
 \form#35:\[ h = \begin{bmatrix} x_1(k) \\ x_2(k) \end{bmatrix} \]
 \form#36:\[ x_0 = \begin{bmatrix} 0 \\ \frac{1 \pi}{500} \end{bmatrix}\]
 \form#37:$u_k$
+\form#38:\[x_k = x_{k-1} + v_{k-1}\]
