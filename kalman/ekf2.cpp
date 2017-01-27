@@ -1,9 +1,9 @@
 /**
-* @file EKF2.cpp
-* @author Auralius Manurung
-* @date 18 Apr 2015
-* @brief Extended Kalman filter implementation, for a nonlinear system.
-*/
+ * @file ekf2.cpp
+ * @author Auralius Manurung
+ * @date 18 Apr 2015
+ * @brief Second order extended Kalman filter implementation, for a nonlinear system.
+ */
 
 #include "ekf2.h"
 

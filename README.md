@@ -2,7 +2,10 @@
 
 ## Kalman filter and extended Kalman filter implementation in C++ 
 
-The Kalman filter implementation is located in: kf.h and kf.cpp while the extended Kalman filter implementation is located in ekf.h and ekf.cpp.
+What have been implemeted:  
+* Kalman filter  
+* Extended Kalman filter  
+* Second order extended Kalman filter  
 
 Please use cmake to build all the codes.
 

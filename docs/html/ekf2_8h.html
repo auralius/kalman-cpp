@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>kalman-cpp: kalman/kf.h File Reference</title>
+<title>kalman-cpp: kalman/ekf2.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -60,7 +60,7 @@
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('kf_8h.html','');});
+$(document).ready(function(){initNavTree('ekf2_8h.html','');});
 </script>
 <div id="doc-content">
 <div class="header">
@@ -68,48 +68,50 @@ $(document).ready(function(){initNavTree('kf_8h.html','');});
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">kf.h File Reference</div>  </div>
+<div class="title">ekf2.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Header file for the Kalman filter, for a linear system.  
+<p>Header file for the second order extended Kalman filter implementation, for a nonlinear system.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;math.h&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;armadillo&gt;</code><br />
 </div>
-<p><a href="kf_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="ekf2_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_k_f.html">KF</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemetation of the Kalman filter.  <a href="class_k_f.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_k_f2.html">EKF2</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemetation of the extended Kalman filter. This class needs to be derived.  <a href="class_e_k_f2.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a525335710b53cb064ca56b936120431e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kf_8h.html#a525335710b53cb064ca56b936120431e">_USE_MATH_DEFINES</a></td></tr>
+<tr class="memitem:a525335710b53cb064ca56b936120431e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ekf2_8h.html#a525335710b53cb064ca56b936120431e">_USE_MATH_DEFINES</a></td></tr>
 <tr class="separator:a525335710b53cb064ca56b936120431e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Header file for the Kalman filter, for a linear system. </p>
+<div class="textblock"><p>Header file for the second order extended Kalman filter implementation, for a nonlinear system. </p>
 <dl class="section author"><dt>Author</dt><dd>Auralius Manurung </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>18 Apr 2015 Define a system: <p class="formulaDsp">
-<img class="formulaDsp" alt="\[x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}\]" src="form_16.png"/>
+<dl class="section date"><dt>Date</dt><dd>25 Jan 2017 </dd></dl>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Define a non-linear discrete-time process: </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[x_k = f(x_{k-1}, u_{k-1}, k) + v_{k-1}\]" src="form_4.png"/>
 </p>
  <p class="formulaDsp">
-<img class="formulaDsp" alt="\[z_k = Hx_k + w_k\]" src="form_17.png"/>
+<img class="formulaDsp" alt="\[z_k = h(x_k, u_k, k) + w_k\]" src="form_5.png"/>
 </p>
- where:<br />
+<p> where:<br />
+ <img class="formulaInl" alt="$f$" src="form_6.png"/> is the dynamic model of the system<br />
+ <img class="formulaInl" alt="$h$" src="form_7.png"/> is the measurement model of the system<br />
  <img class="formulaInl" alt="$v$" src="form_8.png"/> is the process noise (Gaussian with covariance Q)<br />
  <img class="formulaInl" alt="$w$" src="form_9.png"/> is the measurement noise (Gaussian with covariance R)<br />
- <img class="formulaInl" alt="$A$" src="form_18.png"/> is the system matrix<br />
- <img class="formulaInl" alt="$B$" src="form_19.png"/> is the input matrix<br />
- <img class="formulaInl" alt="$H$" src="form_20.png"/> is the output matrix<br />
  <img class="formulaInl" alt="$x$" src="form_0.png"/> is the state vector<br />
  <img class="formulaInl" alt="$z$" src="form_10.png"/> is the output vector<br />
  <img class="formulaInl" alt="$u$" src="form_11.png"/> is the input vector<br />
-</dd></dl>
+</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a525335710b53cb064ca56b936120431e"></a>
 <div class="memitem">
@@ -128,7 +130,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_dc133b73f91f0e3b4287924ed00a2a00.html">kalman</a></li><li class="navelem"><a class="el" href="kf_8h.html">kf.h</a></li>
+    <li class="navelem"><a class="el" href="dir_dc133b73f91f0e3b4287924ed00a2a00.html">kalman</a></li><li class="navelem"><a class="el" href="ekf2_8h.html">ekf2.h</a></li>
     <li class="footer">Generated on Fri Jan 27 2017 16:35:30 for kalman-cpp by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
