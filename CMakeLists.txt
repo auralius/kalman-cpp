@@ -10,7 +10,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(CMAKE_BUILD_TYPE Debug)
 
-add_library (kalman-cpp ./kalman/kf.cpp ./kalman/ekf.cpp)
+add_library (kalman-cpp ./kalman/kf.cpp ./kalman/ekf.cpp ./kalman/ekf2.cpp)
 
 target_include_directories (kalman-cpp PUBLIC ./kalman)
 
@@ -21,6 +21,7 @@ add_executable(demo4 ./samples/main4.cpp)
 add_executable(demo5 ./samples/main5.cpp)
 add_executable(demo6 ./samples/main6.cpp)
 add_executable(demo7 ./samples/main7.cpp)
+add_executable(demo8 ./samples/main8.cpp)
 
 install(TARGETS demo1 RUNTIME DESTINATION ../bin)
 install(TARGETS demo2 RUNTIME DESTINATION ../bin)
@@ -37,3 +38,4 @@ target_link_libraries (demo4 LINK_PUBLIC kalman-cpp armadillo)
 target_link_libraries (demo5 LINK_PUBLIC kalman-cpp armadillo)   
 target_link_libraries (demo6 LINK_PUBLIC kalman-cpp armadillo)  
 target_link_libraries (demo7 LINK_PUBLIC kalman-cpp armadillo python2.7)  
+target_link_libraries (demo8 LINK_PUBLIC kalman-cpp armadillo python2.7)  
