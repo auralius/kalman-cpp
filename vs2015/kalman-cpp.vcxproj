@@ -159,10 +159,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\kalman\ekf.cpp" />
+    <ClCompile Include="..\kalman\ekf2.cpp" />
     <ClCompile Include="..\kalman\kf.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\kalman\ekf.h" />
+    <ClInclude Include="..\kalman\ekf2.h" />
     <ClInclude Include="..\kalman\kf.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

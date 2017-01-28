@@ -160,6 +160,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\kalman\ekf2.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\kalman\kf.cpp"
 				>
 			</File>
@@ -171,6 +175,10 @@
 			>
 			<File
 				RelativePath="..\kalman\ekf.h"
+				>
+			</File>
+			<File
+				RelativePath="..\kalman\ekf2.h"
 				>
 			</File>
 			<File

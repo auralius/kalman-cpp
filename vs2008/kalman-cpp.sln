@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+# Visual C++ Express 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kalman-cpp", "kalman-cpp.vcproj", "{C7B2DEE4-88B9-4146-BFF1-A80462A0C3DF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo1", "demo1.vcproj", "{639B2C6F-19CF-43DD-9C45-DB955FC598C8}"
@@ -32,6 +32,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo6", "demo6.vcproj", "{9
 	ProjectSection(ProjectDependencies) = postProject
 		{C7B2DEE4-88B9-4146-BFF1-A80462A0C3DF} = {C7B2DEE4-88B9-4146-BFF1-A80462A0C3DF}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo8", "demo8.vcproj", "{8121ABB3-D461-4458-80A0-E8DE2993230E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{91E17DCE-F3F1-4439-8321-6C292E1DD267}.Debug|Win32.Build.0 = Debug|Win32
 		{91E17DCE-F3F1-4439-8321-6C292E1DD267}.Release|Win32.ActiveCfg = Release|Win32
 		{91E17DCE-F3F1-4439-8321-6C292E1DD267}.Release|Win32.Build.0 = Release|Win32
+		{8121ABB3-D461-4458-80A0-E8DE2993230E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8121ABB3-D461-4458-80A0-E8DE2993230E}.Debug|Win32.Build.0 = Debug|Win32
+		{8121ABB3-D461-4458-80A0-E8DE2993230E}.Release|Win32.ActiveCfg = Release|Win32
+		{8121ABB3-D461-4458-80A0-E8DE2993230E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
