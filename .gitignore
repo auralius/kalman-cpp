@@ -5,7 +5,6 @@ CMakeCache.txt
 log*.*
 Makefile
 simple_kalman
-demo*
 *.a
 *.lib
 *.exp
