@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{65EE259B-B287-4D6B-83DE-71F3F716B86B}</ProjectGuid>
+    <ProjectGuid>{3AE73FE3-719E-4000-9D72-3E07A23D82CB}</ProjectGuid>
     <RootNamespace>demo2</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -190,13 +190,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\samples\main4.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="kalman-cpp.vcxproj">
       <Project>{c7b2dee4-88b9-4146-bff1-a80462a0c3df}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\samples\main9.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
