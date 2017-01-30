@@ -23,7 +23,7 @@ void EKF2::InitSystem(int n_states, int n_outputs, const mat& Q, const mat& R)
     assert(R.is_square() && "Whoops, R must be a square matrix (n_outputs x n_outputs)");
 
     // Epsilon for computing the Jacobian numerically
-    epsilon_ = 1e-8;
+    epsilon_ = 1e-5;
 
     nStates_ = n_states;
     nOutputs_ = n_outputs;
@@ -118,11 +118,12 @@ mat EKF2::CalcFxx(const colvec &x, const colvec &u, const int k, const int i)
     F2.resize(nStates_, nStates_);
     
     for (int j = 0; j < nStates_; j++) {
-        colvec x0 = x;
         
+        colvec x0 = x;
         x0(j) = x0(j) + epsilon_;
         mat F_plus = CalcFx(x0, u, k);
     
+        x0 = x;
         x0(j) = x0(j) - epsilon_;
         mat F_min = CalcFx(x0, u, k);
         
@@ -140,11 +141,12 @@ mat EKF2::CalcHxx(const colvec &x, const colvec &u, const int k, const int i)
     H2.resize(nStates_, nStates_);
     
     for (int j = 0; j < nStates_; j++) {
-        colvec x0 = x;
         
+        colvec x0 = x;
         x0(j) = x0(j) + epsilon_;
         mat H_plus = CalcHx(x0, u, k);
     
+        x0 = x;
         x0(j) = x0(j) - epsilon_;
         mat H_min = CalcHx(x0, u, k);
        
