@@ -3,11 +3,11 @@
  * @author Auralius Manurung
  * @date 27 Jan 2017
  * 
- * @brief 
+ * @brief This is to test the class FX.
  *
  */
 
-#include "fun.h"
+#include "fx.h"
 
 
 colvec foo(colvec &x, colvec &a)
@@ -22,7 +22,7 @@ colvec foo(colvec &x, colvec &a)
 
 int main(int argc, char** argv)
 {
-    FUN f(&foo);
+    FX f(&foo);
     colvec x(1);
     colvec a(1);
     x << 1.0 << 2.0 << 3.0;

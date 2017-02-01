@@ -1,13 +1,13 @@
 /**
-* @file fun.cpp
+* @file fx.cpp
 * @author Auralius Manurung
-* @date 18 Apr 2015
+* @date 28 Jan 2017
 * @brief Implement a user defined mathematical function.
 */
 
-#include "fun.h"
+#include "fx.h"
 
-FUN::FUN(colvec(*f) (colvec &x, colvec &some_constants))
+FX::FX(colvec(*f) (colvec &x, colvec &some_constants))
 {
     // Epsilon for computing the Jacobian numerically
     Epsilon_ = 1e-5;
@@ -16,18 +16,17 @@ FUN::FUN(colvec(*f) (colvec &x, colvec &some_constants))
     F_ = f;
 }
 
-
-FUN::~FUN()
+FX::~FX()
 {
 }
 
-colvec FUN::SolveAt(colvec &x, colvec &some_constants)
+colvec FX::SolveAt(colvec &x, colvec &some_constants)
 {
     colvec ret = F_(x, some_constants);
     return ret;
 }
 
-mat FUN::JacobianAt(colvec &x, colvec &some_constants)
+mat FX::JacobianAt(colvec &x, colvec &some_constants)
 {
     colvec f0 = F_(x, some_constants);
     colvec fn;
@@ -51,7 +50,7 @@ mat FUN::JacobianAt(colvec &x, colvec &some_constants)
     return jac;
 }
 
-mat FUN::HessianAt(colvec &x, colvec &some_constants, int i)
+mat FX::HessianAt(colvec &x, colvec &some_constants, int i)
 {
     int n = x.size();
     mat hess;
@@ -75,7 +74,7 @@ mat FUN::HessianAt(colvec &x, colvec &some_constants, int i)
     return hess;
 }
 
-void FUN::SetEpsilon(double epsilon)
+void FX::SetEpsilon(double epsilon)
 {
     Epsilon_ = epsilon;
 }

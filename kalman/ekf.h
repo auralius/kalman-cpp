@@ -168,7 +168,7 @@ private:
   mat P_p_;        ///< State covariance after a priori update
   mat P_m_;        ///< State covariance after measurement update
   
-  colvec z_m_; ///< Estimated output
+  colvec z_m_;     ///< Estimated output
   
   double epsilon_; ///< Very small number
   
