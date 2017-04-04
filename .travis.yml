@@ -1,0 +1,15 @@
+sudo: required
+dist: trusty
+language: cpp
+
+before_install:
+  - sudo apt-get update -qq
+
+install:
+  - sudo apt-get -y install libarmadillo-dev
+  - sudo apt-get -y install python2.7-dev
+
+script:
+  - mkdir build
+  - cd build
+  - cmake ..
