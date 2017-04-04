@@ -1,4 +1,4 @@
-https://travis-ci.org/auralius/kalman-cpp.svg?branch=master
+![alt tag](https://travis-ci.org/auralius/kalman-cpp.svg?branch=master)
 
 
 # kalman-cpp
