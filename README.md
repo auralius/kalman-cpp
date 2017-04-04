@@ -39,3 +39,6 @@ MATLAB m-files for each example are provided in 'm-files' folder. Octave can als
 ## Documentation
 
 See documentation [here](docs/html/index.html).
+
+## Github page  
+https://auralius.github.io/kalman-cpp/
