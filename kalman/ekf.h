@@ -6,8 +6,8 @@
  * 
  * @section DESCRIPTION
  * Define a non-linear discrete-time process: 
- * \f[x_k = f(x_{k-1}, u_{k-1}, k) + v_{k-1}\f]
- * \f[z_k = h(x_k, u_k, k) + w_k\f]
+ * \f[x_k = f(x_{k-1}, u_{k-1}) + v_{k-1}\f]
+ * \f[z_k = h(x_k) + w_k\f]
  * where:\n 
  * \f$f\f$ is the dynamic model of the system\n
  * \f$h\f$ is the measurement model of the system\n
@@ -58,18 +58,14 @@ public:
    * \brief Define model of your system.
    * @param x System states
    * @param u System inputs
-   * @param k k-th iteration
    */
-  virtual colvec f(const colvec &x, const colvec &u, const int k);
+  virtual colvec f(const colvec &x, const colvec &u);
   
   /*!
    * \brief Define the output model of your system.
    * @param x System states
-   * @param u Input vector
-   * @param k k-th iteration
    */
-  virtual colvec h(const colvec &x, const colvec &u, const int k);
-  
+  virtual colvec h(const colvec &x);
   /*!
    * \brief Initialize the system states.
    * Must be called after InitSystem.
@@ -90,9 +86,8 @@ public:
    * \brief Do the extended Kalman iteration step-by-step while simulating the system. 
    * Simulating the system is done to calculate system states and outputs.
    * @param u The applied input to the system
-   * @param k k-th iteration
    */
-  void EKalmanf(const colvec& u, const int k);
+  void EKalmanf(const colvec& u);
   
   /*!
    * \brief Do the extended Kalman iteration step-by-step without simulating the system. 
@@ -101,9 +96,8 @@ public:
    * The only thing that matters is the estimated states.
    * @param z The measurement outputs, this is a returned value
    * @param u The applied input to the system
-   * @param k k-th iteration
    */
-  void EKalmanf(const colvec& z, const colvec& u, const int k);
+  void EKalmanf(const colvec& z, const colvec& u);
   
  /*!
   * @brief Get current simulated true state.
@@ -137,18 +131,15 @@ private:
    * finite-difference perturbation magnitude. 
    * @param x System states
    * @param u Input vector
-   * @param k k-th iteration
    */
-  void CalcF(const colvec &x, const colvec &u, const int k);
+  void CalcF(const colvec &x, const colvec &u);
   
   /*!
    * \brief Compute the Jacobian of h numerically using  a  small  
    * finite-difference perturbation magnitude.
    * @param x System states
-   * @param u Input vector
-   * @param k k-th iteration 
    */
-  void CalcH(const colvec &x, const colvec &u, const int k);
+  void CalcH(const colvec &x);
 
   mat F_;          ///< Jacobian of F	
   mat H_;          ///< Jacobian of H
@@ -171,7 +162,7 @@ private:
   colvec z_m_;     ///< Estimated output
   
   double epsilon_; ///< Very small number
-  
+
 protected:
   
   int nStates_;   ///< Number of the states
