@@ -6,8 +6,8 @@
  *
  * @section DESCRIPTION
  * Define a non-linear discrete-time process:
- * \f[x_k = f(x_{k-1}, u_{k-1}, k) + v_{k-1}\f]
- * \f[z_k = h(x_k, u_k, k) + w_k\f]
+ * \f[x_k = f(x_{k-1}, u_{k-1}) + v_{k-1}\f]
+ * \f[z_k = h(x_k) + w_k\f]
  * where:\n
  * \f$f\f$ is the dynamic model of the system\n
  * \f$h\f$ is the measurement model of the system\n
@@ -58,17 +58,14 @@ public:
      * \brief Define model of your system.
      * @param x System states
      * @param u System inputs
-     * @param k k-th iteration
      */
-    virtual colvec f(const colvec &x, const colvec &u, const int k);
+    virtual colvec f(const colvec &x, const colvec &u);
 
     /*!
      * \brief Define the output model of your system.
      * @param x System states
-     * @param u Input vector
-     * @param k k-th iteration
      */
-    virtual colvec h(const colvec &x, const colvec &u, const int k);
+    virtual colvec h(const colvec &x);
 
     /*!
      * \brief Initialize the system states.
@@ -90,9 +87,8 @@ public:
      * \brief Do the extended Kalman iteration step-by-step while simulating the system.
      * Simulating the system is done to calculate system states and outputs.
      * @param u The applied input to the system
-     * @param k k-th iteration
      */
-    void EKalmanf(const colvec& u, const int k);
+    void EKalmanf(const colvec& u);
 
     /*!
      * \brief Do the extended Kalman iteration step-by-step without simulating the system.
@@ -101,9 +97,8 @@ public:
      * The only thing that matters is the estimated states.
      * @param z The measurement outputs, this is a returned value
      * @param u The applied input to the system
-     * @param k k-th iteration
      */
-    void EKalmanf(const colvec& z, const colvec& u, const int k);
+    void EKalmanf(const colvec& z, const colvec& u);
 
     /*!
      * @brief Get current simulated true state.
@@ -137,36 +132,33 @@ private:
      * finite-difference perturbation magnitude.
      * @param x System states
      * @param u Input vector
-     * @param k k-th iteration
      */
-    mat CalcFx(const colvec &x, const colvec &u, const int k);
+    mat CalcFx(const colvec &x, const colvec &u);
 
     /*!
      * \brief Compute the Jacobian of h numerically using  a  small
      * finite-difference perturbation magnitude.
      * @param x System states
-     * @param u Input vector
-     * @param k k-th iteration
      */
-    mat CalcHx(const colvec &x, const colvec &u, const int k);
+    mat CalcHx(const colvec &x);
 
     /*!
      * \brief Compute the Hessian of f numerically using  a  small
      * finite-difference perturbation magnitude.
      * @param x System states
      * @param u Input vector
-     * @param k k-th iteration
+     * @param i i-th element of function f
      */
-    mat CalcFxx(const colvec &x, const colvec &u, const int k, const int i);
+    mat CalcFxx(const colvec &x, const colvec &u, const int i);
 
     /*!
      * \brief Compute the Hessian of h numerically using  a  small
      * finite-difference perturbation magnitude.
      * @param x System states
      * @param u Input vector
-     * @param k k-th iteration
+     * @param i i-th element of function f
      */
-    mat CalcHxx(const colvec &x, const colvec &u, const int k, const int i);
+    mat CalcHxx(const colvec &x, const int i);
     
    /*!
     * \brief Create a unit vector in direction of the coordinate axis i, that is, it has a 1 at position i and 0 at other positions.

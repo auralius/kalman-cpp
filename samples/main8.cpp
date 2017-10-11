@@ -21,7 +21,7 @@
 class MyEKF: public EKF2
 {
 public:  
-  virtual colvec f(const colvec& x, const colvec& u, const int k) {
+  virtual colvec f(const colvec& x, const colvec& u) {
     colvec xk(nStates_);
     mat A(3, 3);
 
@@ -34,7 +34,7 @@ public:
     return xk;
   }
   
-  virtual colvec h(const colvec& x, const colvec& u, const int k) {
+  virtual colvec h(const colvec& x) {
     colvec zk(nOutputs_);
     zk(0) = x(2)*sin(x(0));
     return zk;
@@ -93,7 +93,7 @@ int main(int argc, char** argv)
   myekf.InitSystemStateCovariance(P0);
   
   for (int k = 0; k < 500; k ++) {
-    myekf.EKalmanf(u, k);
+    myekf.EKalmanf(u);
     
     colvec *x = myekf.GetCurrentState();
     colvec *x_m = myekf.GetCurrentEstimatedState();

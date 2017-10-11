@@ -21,14 +21,14 @@
 class MyEKF: public EKF
 {
 public:  
-  virtual colvec f(const colvec& x, const colvec& u, const int k) {
+  virtual colvec f(const colvec& x, const colvec& u) {
     colvec xk(nOutputs_);
-    xk(0) = sin(x(1) * k);
+    xk(0) = sin(x(1) * u(0));
     xk(1) = x(1);
     return xk;
   }
   
-  virtual colvec h(const colvec& x, const colvec& u, const int k) {
+  virtual colvec h(const colvec& x) {
     colvec zk(nOutputs_);
     zk(0) = x(0);
     zk(1) = x(1);
@@ -62,17 +62,15 @@ int main(int argc, char** argv)
   colvec x0(2);
   x0 << 0 << 1 * M_PI / 500;
   
-  colvec u;
-  
-  // No inputs
-  u = u.zeros(); 
-  
+  colvec u(1);
+   
   MyEKF myekf;
   myekf.InitSystem(n_states, n_outputs, Q, R);
   myekf.InitSystemState(x0);
   
   for (int k = 0; k < 1000; k ++) {
-    myekf.EKalmanf(u, k);
+    u(0) = k;
+    myekf.EKalmanf(u);
     
     colvec *x = myekf.GetCurrentState();
     colvec *x_m = myekf.GetCurrentEstimatedState();
