@@ -1,0 +1,43 @@
+\form#0:$x$
+\form#1:$y$
+\form#2:$\dot{x}$
+\form#3:$\dot{y}$
+\form#4:\[x_k = f(x_{k-1}, u_{k-1}) + v_{k-1}\]
+\form#5:\[z_k = h(x_k) + w_k\]
+\form#6:$f$
+\form#7:$h$
+\form#8:$v$
+\form#9:$w$
+\form#10:$z$
+\form#11:$u$
+\form#12:$x_k$
+\form#13:$z_k$
+\form#14:$\hat{x}_k$
+\form#15:$\hat{z}_k$
+\form#16:\[y = \begin{bmatrix} f_1(x_1,x_2,x_3) \\ f_2(x_1,x_2,x_3) \end{bmatrix} \]
+\form#17:\[Jac(y)=\begin{bmatrix} \frac{\partial f_1}{\partial x_1} \frac{\partial f_1}{\partial x_2} \frac{\partial f_1}{\partial x_3} \\ \frac{\partial f_2}{\partial x_1} \frac{\partial f_2}{\partial x_2} \frac{\partial f_2}{\partial x_3} \end{bmatrix} \]
+\form#18:\[Hess(y(1)) =\begin{bmatrix} \frac{\partial^2 f_1}{\partial x_1^2} \frac{\partial^2 f_1}{\partial x_1 \partial x_2} \frac{\partial^2 f_1}{\partial x_1 \partial x_3} \\ \frac{\partial^2 f_1}{\partial x_2 \partial x_1} \frac{\partial^2 f_1}{\partial x_2^2} \frac{\partial^2 f_1}{\partial x_2 \partial x_3} \\ \frac{\partial^2 f_1}{\partial x_3 \partial x_1} \frac{\partial^2 f_1}{\partial x_3 \partial x_2} \frac{\partial^2 f_1}{\partial x_3^2} \end{bmatrix} \]
+\form#19:\[Hess(y(2)) =\begin{bmatrix} \frac{\partial^2 f_2}{\partial x_1^2} \frac{\partial^2 f_2}{\partial x_1 \partial x_2} \frac{\partial^2 f_2}{\partial x_1 \partial x_3} \\ \frac{\partial^2 f_2}{\partial x_2 \partial x_1} \frac{\partial^2 f_2}{\partial x_2^2} \frac{\partial^2 f_2}{\partial x_2 \partial x_3} \\ \frac{\partial^2 f_2}{\partial x_3 \partial x_1} \frac{\partial^2 f_2}{\partial x_3 \partial x_2} \frac{\partial^2 f_2}{\partial x_3^2} \end{bmatrix} \]
+\form#20:\[x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}\]
+\form#21:\[z_k = Hx_k + w_k\]
+\form#22:$A$
+\form#23:$B$
+\form#24:$H$
+\form#25:\[Q = Q^T\]
+\form#26:\[R = R^T\]
+\form#27:\[x_k = 12 + v_{k-1}\]
+\form#28:\[z_k = x_k + w_ḳ\]
+\form#29:$A = 0$
+\form#30:$B = 1$
+\form#31:$H = 1$
+\form#32:$u = 12$
+\form#33:$x_0 = 12$
+\form#34:$Q=4$
+\form#35:$R=4$
+\form#36:$Q$
+\form#37:$R$
+\form#38:\[ f = \begin{bmatrix} sin(x_2(k-1))(k-1) \\ x_2(k-1) \end{bmatrix} \]
+\form#39:\[ h = \begin{bmatrix} x_1(k) \\ x_2(k) \end{bmatrix} \]
+\form#40:\[ x_0 = \begin{bmatrix} 0 \\ \frac{1 \pi}{500} \end{bmatrix}\]
+\form#41:$u_k$
+\form#42:\[x_k = x_{k-1} + v_{k-1}\]
