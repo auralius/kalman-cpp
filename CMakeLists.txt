@@ -10,7 +10,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(CMAKE_BUILD_TYPE Debug)
 
-add_library (kalman-cpp ./kalman/kf.cpp ./kalman/ekf.cpp ./kalman/ekf2.cpp ./kalman/fun.cpp)
+add_library (kalman-cpp ./kalman/kf.cpp ./kalman/ekf.cpp ./kalman/ekf2.cpp ./kalman/fx.cpp)
 
 target_include_directories (kalman-cpp PUBLIC ./kalman)
 
