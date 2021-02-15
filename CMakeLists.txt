@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 2.6)
 
 project(kalman-cpp)
 
+find_package(PythonLibs REQUIRED)
+include_directories(${PYTHON_INCLUDE_DIRS})
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ../bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ../bin)
@@ -10,7 +13,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(CMAKE_BUILD_TYPE Debug)
 
-add_library (kalman-cpp ./kalman/kf.cpp ./kalman/ekf.cpp ./kalman/ekf2.cpp ./kalman/fx.cpp)
+add_library (kalman-cpp ./kalman/kf.cpp ./kalman/ekf.cpp ./kalman/ekf2.cpp ./kalman/ukf.cpp ./kalman/fx.cpp)
 
 target_include_directories (kalman-cpp PUBLIC ./kalman)
 
@@ -23,6 +26,8 @@ add_executable(demo6 ./samples/main6.cpp)
 add_executable(demo7 ./samples/main7.cpp)
 add_executable(demo8 ./samples/main8.cpp)
 add_executable(demo9 ./samples/main9.cpp)
+add_executable(demo10 ./samples/main10.cpp)
+add_executable(demo11 ./samples/main11.cpp)
 
 install(TARGETS demo1 RUNTIME DESTINATION ../bin)
 install(TARGETS demo2 RUNTIME DESTINATION ../bin)
@@ -33,6 +38,8 @@ install(TARGETS demo6 RUNTIME DESTINATION ../bin)
 install(TARGETS demo7 RUNTIME DESTINATION ../bin)
 install(TARGETS demo8 RUNTIME DESTINATION ../bin)
 install(TARGETS demo9 RUNTIME DESTINATION ../bin)
+install(TARGETS demo10 RUNTIME DESTINATION ../bin)
+install(TARGETS demo11 RUNTIME DESTINATION ../bin)
 
 target_link_libraries (demo1 LINK_PUBLIC kalman-cpp armadillo)	
 target_link_libraries (demo2 LINK_PUBLIC kalman-cpp armadillo)   
@@ -40,6 +47,8 @@ target_link_libraries (demo3 LINK_PUBLIC kalman-cpp armadillo)
 target_link_libraries (demo4 LINK_PUBLIC kalman-cpp armadillo)   
 target_link_libraries (demo5 LINK_PUBLIC kalman-cpp armadillo)   
 target_link_libraries (demo6 LINK_PUBLIC kalman-cpp armadillo)  
-target_link_libraries (demo7 LINK_PUBLIC kalman-cpp armadillo python2.7)  
+target_link_libraries (demo7 LINK_PUBLIC kalman-cpp armadillo python3.8)  
 target_link_libraries (demo8 LINK_PUBLIC kalman-cpp armadillo)  
 target_link_libraries (demo9 LINK_PUBLIC kalman-cpp armadillo)  
+target_link_libraries (demo10 LINK_PUBLIC kalman-cpp armadillo)  
+target_link_libraries (demo11 LINK_PUBLIC kalman-cpp armadillo)  

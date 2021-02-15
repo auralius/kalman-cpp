@@ -40,7 +40,7 @@ int main(int argc, char** argv)
      * For plotting with matplotlibcpp
      */
     int N = 500;
-    std::vector<double> k_plot(N), noisy_plot(500), smooth_plot(N);
+    std::vector<double> k_plot(N), noisy_plot(N), smooth_plot(N);
   
     for (int k = 0; k < N; k++) {
         
@@ -61,8 +61,8 @@ int main(int argc, char** argv)
       smooth_plot.at(k) = z_m->at(0,0);
     }
     
-    plt::named_plot("Output (measurement)", k_plot, noisy_plot, "r+");
-    plt::named_plot("Estimated output", k_plot, smooth_plot);
+    plt::plot(k_plot, noisy_plot, "r+",{{"label","Measurement"}});
+    plt::plot(k_plot, smooth_plot,{{"label","Estimated"}});
     plt::legend();
     plt::show();
     

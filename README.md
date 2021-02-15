@@ -9,6 +9,7 @@ What have been implemeted:
 * Kalman filter  
 * Extended Kalman filter  
 * Second order extended Kalman filter  
+* Unscented Kalman filter  
 
 Please use cmake to build all the codes.
 
@@ -23,7 +24,7 @@ make
 
 ## Windows System  
 
-In a Windows system, a Visual Studio solution file (VS 2008) is provided. 
+In a Windows system, a Visual Studio solution file (VS 2015) is provided. 
 
 ## Dependencies
 
