@@ -1,5 +1,5 @@
 sudo: required
-dist: focal
+dist: bionic
 language: cpp
 
 before_install:
