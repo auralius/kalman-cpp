@@ -44,7 +44,11 @@ int main(int argc, char** argv)
    * it with Matlab. Use: plot_data5.m to plot the results.
    */
   ofstream log_file;
+#ifdef _WIN32
+  log_file.open("..\\bin\\log_file5.txt");
+#else
   log_file.open("log_file5.txt");
+#endif
   
   int n_states = 3;
   int n_outputs = 1;

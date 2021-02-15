@@ -21,7 +21,11 @@ int main(int argc, char** argv)
      * it with Matlab. Use: plot_data2.m to plot the results.
      */
     ofstream log_file;
+#ifdef _WIN32
+    log_file.open("..\\bin\\log_file2.txt");
+#else
     log_file.open("log_file2.txt");
+#endif
    
     mat A(2,2), B(2,1), H(1,1), Q(2,2), R(1,1);
     

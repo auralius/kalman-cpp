@@ -46,7 +46,11 @@ int main(int argc, char** argv)
    * it with Matlab. Use: plot_data4.m to plot the results.
    */
   ofstream log_file;
+#ifdef _WIN32
+  log_file.open("..\\bin\\log_file4.txt");
+#else
   log_file.open("log_file4.txt");
+#endif
   
   int n_states = 2;
   int n_outputs = 2;

@@ -3,7 +3,7 @@
  * @author Auralius Manurung
  * @date 27 Jan 2017
  * 
- * @brief This is to test the class FX.
+ * @brief This is to test the class FX to compute Jacobian and Hessian of function(s).
  *
  */
 

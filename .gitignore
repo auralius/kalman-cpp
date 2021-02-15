@@ -11,3 +11,4 @@ simple_kalman
 *.user
 *.suo
 *.ncb
+vs2015/kalman-cpp.sdf

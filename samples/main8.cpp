@@ -1,5 +1,5 @@
 /**
- * @file main8.cpp
+ * @file main11.cpp
  * @author Auralius Manurung
  * @date 27 Jan 2017
  * 
@@ -11,7 +11,7 @@
 
 #include <fstream>
 
-#include "ekf2.h"
+#include "ukf.h"
 
 /// @cond DEV
 /*
@@ -54,10 +54,14 @@ int main(int argc, char** argv)
 {
   /* 
    * Log the result into a tab delimitted file, later we can open 
-   * it with Matlab. Use: plot_data6.m to plot the results.
+   * it with Matlab. Use: plot_data8.m to plot the results.
    */
   ofstream log_file;
+#ifdef _WIN32
+  log_file.open("..\\bin\\log_file8.txt");
+#else
   log_file.open("log_file8.txt");
+#endif
   
   int n_states = 3;
   int n_outputs = 1;

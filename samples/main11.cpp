@@ -1,9 +1,9 @@
 /**
- * @file main6.cpp
+ * @file main11.cpp
  * @author Auralius Manurung
- * @date 12 Aug 2015
+ * @date 15 Peb 2021
  * 
- * @brief Example for the extended Kalman filter.
+ * @brief An example for an Unscented Kalman filter.
  *
  * This example is taken from  <a href="http://becs.aalto.fi/en/research/bayes/ekfukf/documentation.pdf">here</a>, 
  * section 3.2: "Tracking a random sine signal".
@@ -11,14 +11,14 @@
 
 #include <fstream>
 
-#include "ekf.h"
+#include "ukf.h"
 
 /// @cond DEV
 /*
- * Class EKF needs to be derived, two virtual functions are provided in 
+ * Class UKF needs to be derived, two virtual functions are provided in 
  * which system model and output model are described.
  */
-class MyEKF: public EKF
+class MyUKF: public UKF
 {
 public:  
   virtual colvec f(const colvec& x, const colvec& u) {
@@ -44,7 +44,7 @@ public:
   
 };
 
-const double MyEKF::dt = 0.01;
+const double MyUKF::dt = 0.01;
 
 /// @endcond
 
@@ -54,13 +54,13 @@ int main(int argc, char** argv)
 {
   /* 
    * Log the result into a tab delimitted file, later we can open 
-   * it with Matlab. Use: plot_data6.m to plot the results.
+   * it with Matlab. Use: plot_data8.m to plot the results.
    */
   ofstream log_file;
 #ifdef _WIN32
-  log_file.open("..\\bin\\log_file6.txt");
+  log_file.open("..\\bin\\log_file11.txt");
 #else
-  log_file.open("log_file6.txt");
+  log_file.open("log_file8.txt");
 #endif
   
   int n_states = 3;
@@ -69,11 +69,11 @@ int main(int argc, char** argv)
   mat R(n_outputs, n_outputs);
   
    
-  MyEKF myekf;
+  MyUKF myukf;
   
   double q1 = 0.2;
   double q2 = 0.1;
-  double dt = myekf.dt;
+  double dt = myukf.dt;
   
   Q << q1*dt*dt*dt/3 << q1*dt*dt/2 << 0     << endr
     << q1*dt*dt/2    << q1*dt      << 0     << endr
@@ -92,17 +92,17 @@ int main(int argc, char** argv)
   // No inputs
   u = u.zeros(); 
  
-  myekf.InitSystem(n_states, n_outputs, Q, R);
-  myekf.InitSystemState(x0);
-  myekf.InitSystemStateCovariance(P0);
+  myukf.InitSystem(n_states, n_outputs, Q, R);
+  myukf.InitSystemState(x0);
+  myukf.InitSystemStateCovariance(P0);
   
   for (int k = 0; k < 500; k ++) {
-    myekf.EKalmanf(u);
+    myukf.UKalmanf(u);
     
-    colvec *x = myekf.GetCurrentState();
-    colvec *x_m = myekf.GetCurrentEstimatedState();
-    colvec *z = myekf.GetCurrentOutput();
-    colvec *z_m = myekf.GetCurrentEstimatedOutput();
+    colvec *x = myukf.GetCurrentState();
+    colvec *x_m = myukf.GetCurrentEstimatedState();
+    colvec *z = myukf.GetCurrentOutput();
+    colvec *z_m = myukf.GetCurrentEstimatedOutput();
     
     log_file << k << '\t' << x->at(0,0) << '\t' << x_m->at(0,0)  
                   << '\t' << x->at(1,0) << '\t' << x_m->at(1,0)

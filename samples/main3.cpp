@@ -22,7 +22,11 @@ int main(int argc, char** argv)
      * it with Matlab. Use: plot_data3.m to plot the results.
      */
     ofstream log_file;
+#ifdef _WIN32
+    log_file.open("..\\bin\\log_file3.txt");
+#else
     log_file.open("log_file3.txt");
+#endif
    
     /*
 
