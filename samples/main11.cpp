@@ -60,7 +60,7 @@ int main(int argc, char** argv)
 #ifdef _WIN32
   log_file.open("..\\bin\\log_file11.txt");
 #else
-  log_file.open("log_file8.txt");
+  log_file.open("log_file11.txt");
 #endif
   
   int n_states = 3;

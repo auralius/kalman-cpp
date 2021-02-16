@@ -1,3 +1,5 @@
+![alt tag](https://travis-ci.org/auralius/kalman-cpp.svg?branch=master)
+
 # kalman-cpp
 
 ## Kalman filter and extended Kalman filter implementation in C++ 

@@ -178,13 +178,13 @@ The examples we have so far are theoritical. Very often what we would like to do
 reduce noise from preacquired measurement data. There are several reason why we want to use Kalman filter. 
 For example, the noise has very wide spectrum, thus, using frequency based filter hurts the data.
 
-In principal, there are 2 scenarios of using the Kalman filter.
+Principally, there are two scenarios of using the Kalman filter.
 The first scenario is by first simulating the system as shown in the figure below.  
 In this scenario, we only need to supply \f$u_k\f$ to the Kalman filter function. 
-The Kalman filter will give us 4 outputs: \f$x_k\f$, \f$z_k\f$, \f$\hat{x}_k\f$, and \f$\hat{z}_k\f$.
-\f$x_k\f$ and \f$z_k\f$ are called the true system states and the true system outputs, respectvely. They are noisy.
-\f$\hat{x}_k\f$, and \f$\hat{z}_k\f$ are called the estimated system states and the estimated system outputs, respectively. 
-They are filtered.
+Here, the Kalman filter gives us four outputs, which are: \f$x_k\f$, \f$z_k\f$, \f$\hat{x}_k\f$, and \f$\hat{z}_k\f$.
+\f$x_k\f$ and \f$z_k\f$ are called the true states and the true outputs, respectvely. They are noisy.
+\f$\hat{x}_k\f$, and \f$\hat{z}_k\f$ are called the estimated states and the estimated outputs, respectively. 
+They are filtered, look smoother and closer ti the noisless true states.
 
 The function prototype for this scenario can be written as:
 [\f$x_k\f$, \f$z_k\f$, \f$\hat{x}_k\f$, \f$\hat{z}_k\f$] = function kalmanf( \f$u_k\f$)
