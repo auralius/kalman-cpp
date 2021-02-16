@@ -1,5 +1,3 @@
-![alt tag](https://travis-ci.org/auralius/kalman-cpp.svg?branch=master)
-
 # kalman-cpp
 
 ## Kalman filter and extended Kalman filter implementation in C++ 
@@ -28,7 +26,8 @@ In a Windows system, a Visual Studio solution file (VS 2015) is provided.
 ## Dependencies
 
 This library utilizes [Armadillo](http://arma.sourceforge.net). 
-In linux system, you can get it from your distribution repository. 
+For plotting, this library uses python3-mathplotlib and libpython3.8-dev.
+In linux system, you can get all of them from your distribution repository. 
 In Windows system, all necessary precompiled libraries are provided in "windows-libs" folder. 
 The contents of windows-libs.zip need to be first extracted. 
 In "bin" folder there are necessary DLLs (blas and lapack) to run your programs.
