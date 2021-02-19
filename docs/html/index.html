@@ -80,10 +80,10 @@ Kalman Filter for Linear Systems</h1>
 <h2><a class="anchor" id="definition_kf"></a>
 Definition</h2>
 <p>A linear system is described as follows. </p><p class="formulaDsp">
-\[x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}\]
+$$x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}$$
 </p>
  <p class="formulaDsp">
-\[z_k = Hx_k + w_k\]
+$$z_k = Hx_k + w_k$$
 </p>
 <p> where:<br  />
  \(v\) is the process noise (Gaussian with covariance Q)<br  />
@@ -98,19 +98,19 @@ Definition</h2>
 <br  />
 The noise covariance matrices must follow these conditions:<br  />
  </p><p class="formulaDsp">
-\[Q = Q^T\]
+$$Q = Q^T$$
 </p>
  <p class="formulaDsp">
-\[R = R^T\]
+$$R = R^T$$
 </p>
 <h2><a class="anchor" id="example_kf"></a>
 Examples</h2>
 <p>An example provided in <a class="el" href="main1_8cpp.html" title="Example for the Kalman filter.">main1.cpp</a> solves <a href="http://www.mathworks.com/matlabcentral/fileexchange/18465-learning-the-kalman-filter-in-simulink-v2-1/content/html/runkalmanfilter.html">the car voltmeter problem</a> using this library. The system model for this problem is governed by:</p>
 <p class="formulaDsp">
-\[x_k = 12 + v_{k-1}\]
+$$x_k = 12 + v_{k-1}$$
 </p>
  <p class="formulaDsp">
-\[z_k = x_k + w_ḳ\]
+$$z_k = x_k + w_ḳ$$
 </p>
 <p>Therefore, we can summarize: \(A = 0\), \(B = 1\), \(H = 1\), \(u = 12\), \(x_0 = 12\), \(Q=4\), and \(R=4\). These values are the put into the following lines of codes.</p>
 <div class="fragment"><div class="line">mat A(1,1), B(1,1), H(1,1), Q(1,1), R(1,1);</div>
@@ -139,10 +139,10 @@ Extended Kalman Filter (EKF) for nonlinear systems</h1>
 <h2><a class="anchor" id="definition_ekf"></a>
 Definition</h2>
 <p>A non-linear system is described by: </p><p class="formulaDsp">
-\[x_k = f(x_{k-1}, u_{k-1}) + v_{k-1}\]
+$$x_k = f(x_{k-1}, u_{k-1}) + v_{k-1}$$
 </p>
  <p class="formulaDsp">
-\[z_k = h(x_k) + w_k\]
+$$z_k = h(x_k) + w_k$$
 </p>
 <p> where:<br  />
  \(f\) is the dynamic model of the system<br  />
@@ -156,23 +156,23 @@ Definition</h2>
 <br  />
 The noise covariance matrices must follow these conditions:<br  />
  </p><p class="formulaDsp">
-\[Q = Q^T\]
+$$Q = Q^T$$
 </p>
  <p class="formulaDsp">
-\[R = R^T\]
+$$R = R^T$$
 </p>
 <h2><a class="anchor" id="example_ekf"></a>
 Example</h2>
 <p>Here, <a class="el" href="main4_8cpp.html" title="Example for the extended Kalman filter.">main4.cpp</a> is taken as an example which is originally adapted from this <br  />
  <a href="http://ch.mathworks.com/matlabcentral/fileexchange/38302-kalman-filter-package/content//Kalman%20Filter%20Package/Examples/ExtendedKalmanFilterDemo.m">MATLAB Central page.</a> The nonlinear system is described as follows.</p>
 <p class="formulaDsp">
-\[ f = \begin{bmatrix} sin(x_2(k-1))(k-1) \\ x_2(k-1) \end{bmatrix} \]
+$$ f = \begin{bmatrix} sin(x_2(k-1))(k-1) \\ x_2(k-1) \end{bmatrix} $$
 </p>
  <p class="formulaDsp">
-\[ h = \begin{bmatrix} x_1(k) \\ x_2(k) \end{bmatrix} \]
+$$ h = \begin{bmatrix} x_1(k) \\ x_2(k) \end{bmatrix} $$
 </p>
  <p class="formulaDsp">
-\[ x_0 = \begin{bmatrix} 0 \\ \frac{1 \pi}{500} \end{bmatrix}\]
+$$ x_0 = \begin{bmatrix} 0 \\ \frac{1 \pi}{500} \end{bmatrix}$$
 </p>
 <p>The <a class="el" href="class_e_k_f.html" title="Implemetation of the extended Kalman filter. This class needs to be derived.">EKF</a> class needs to be derived to allow flexible implementation of the dynamic model as well as the measurement model of the current system .</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>MyEKF: <span class="keyword">public</span> <a class="code" href="class_e_k_f.html">EKF</a></div>
@@ -256,13 +256,13 @@ Example</h2>
 </p>
 <p>This example is taken from <a href="https://www.mathworks.com/matlabcentral/fileexchange/18217-learning-the-unscented-kalman-filter">here</a>. The nonlinear system is described as follows.</p>
 <p class="formulaDsp">
-\[ f = \begin{bmatrix} x_2(k) \\ x_3(k) \\ 0.005 \, x_1(k) \bigg(x_2(k) + x_3(k) \bigg) \end{bmatrix} \]
+$$ f = \begin{bmatrix} x_2(k) \\ x_3(k) \\ 0.005 \, x_1(k) \bigg(x_2(k) + x_3(k) \bigg) \end{bmatrix} $$
 </p>
  <p class="formulaDsp">
-\[ h = \begin{bmatrix} x_1(k) \end{bmatrix} \]
+$$ h = \begin{bmatrix} x_1(k) \end{bmatrix} $$
 </p>
  <p class="formulaDsp">
-\[ x_0 = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}\]
+$$ x_0 = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}$$
 </p>
 <p>The following lines of codes show how to use the <a class="el" href="class_u_k_f.html" title="Implemetation of the Unscented Kalman filter. This class needs to be derived.">UKF</a> class. As mentioned before, we need to first derive the <a class="el" href="class_u_k_f.html" title="Implemetation of the Unscented Kalman filter. This class needs to be derived.">UKF</a> class and define the virtual functions f (process function) and h (output function).</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>MyUKF : <span class="keyword">public</span> <a class="code" href="class_u_k_f.html">UKF</a></div>
@@ -348,10 +348,10 @@ Example</h2>
 <p>As an example, we will take the problem in <a class="el" href="main1_8cpp.html" title="Example for the Kalman filter.">main1.cpp</a>. This time, however, we assume we already had several noisy data points from measurements. Therfore, we will not need the Kalman procedure to simulate the system.</p>
 <p>The system model can be formulated into:</p>
 <p class="formulaDsp">
-\[x_k = x_{k-1} + v_{k-1}\]
+$$x_k = x_{k-1} + v_{k-1}$$
 </p>
  <p class="formulaDsp">
-\[z_k = x_k + w_ḳ\]
+$$z_k = x_k + w_ḳ$$
 </p>
 <p>We then generate random number as the prerecorded noisy data (<b>z_measurement</b>), as the following:</p>
 <div class="fragment"><div class="line"><span class="comment">// Assume we have a noisy signal that is acquired from a measurement tool</span></div>
