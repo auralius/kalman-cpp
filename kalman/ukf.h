@@ -1,10 +1,15 @@
 /**
- * @file ukf.cpp
+ * @file ukf.h
  * @author Auralius Manurung
  * @date 13 Peb 2021
- * @brief Unscented Kalman filter implementation, for a nonlinear system.
+ * @brief Header file for the  Unscented Kalman filter (UKF).
  * 
  * @section DESCRIPTION
+ * The implementation is based on the paper: Wan, E. A., & Van Der Merwe, 
+ * R. (2006). The unscented Kalman filter for nonlinear estimation. 
+ * Proceedings of the IEEE 2000 Adaptive Systems for Signal Processing, 
+ * Communications, and Control Symposium (Cat. No.00EX373), 31(2), 
+ * 153–158. https://doi.org/10.1109/ASSPCC.2000.882463\n\n
  * Define a non-linear discrete-time process: 
  * \f[x_k = f(x_{k-1}, u_{k-1}) + v_{k-1}\f]
  * \f[z_k = h(x_k) + w_k\f]

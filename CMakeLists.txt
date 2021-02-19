@@ -2,9 +2,6 @@ cmake_minimum_required(VERSION 2.6)
 
 project(kalman-cpp)
 
-find_package(PythonLibs REQUIRED)
-include_directories(${PYTHON_INCLUDE_DIRS})
-
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ../bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ../bin)
@@ -47,7 +44,7 @@ target_link_libraries (demo3 LINK_PUBLIC kalman-cpp armadillo)
 target_link_libraries (demo4 LINK_PUBLIC kalman-cpp armadillo)   
 target_link_libraries (demo5 LINK_PUBLIC kalman-cpp armadillo)   
 target_link_libraries (demo6 LINK_PUBLIC kalman-cpp armadillo)  
-target_link_libraries (demo7 LINK_PUBLIC kalman-cpp armadillo ${PYTHON_LIBRARIES})  
+target_link_libraries (demo7 LINK_PUBLIC kalman-cpp armadillo)  
 target_link_libraries (demo8 LINK_PUBLIC kalman-cpp armadillo)  
 target_link_libraries (demo9 LINK_PUBLIC kalman-cpp armadillo)  
 target_link_libraries (demo10 LINK_PUBLIC kalman-cpp armadillo)  

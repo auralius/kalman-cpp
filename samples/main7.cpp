@@ -3,7 +3,7 @@
  * @author Auralius Manurung
  * @date 16 Jan 2017
  * 
- * @brief Example for the Kalman filter.
+ * @brief An example of a Kalman filter practical application.
  *
  * An example on using Kalman fiter for smoothing measurement data.
  * Assume we have a measurment data. 
@@ -13,12 +13,20 @@
  */
 
 #include "kf.h"
-#include "../ext/matplotlibcpp.h"
-
-namespace plt = matplotlibcpp;
 
 int main(int argc, char** argv)
-  {      
+  {    
+  /* 
+   * Log the result into a tab delimitted file, later we can open 
+   * it with Matlab. Use: plot_data7.m to plot the results.
+   */
+  ofstream log_file;
+#ifdef _WIN32
+  log_file.open("..\\bin\\log_file7.txt");
+#else
+  log_file.open("log_file7.txt");
+#endif
+  
     /*
      * Define the system and initialize the Kalman filter
      */
@@ -36,11 +44,7 @@ int main(int argc, char** argv)
     KF kalman;
     kalman.InitSystem(A, B, H, Q, R);
     
-    /*
-     * For plotting with matplotlibcpp
-     */
     int N = 500;
-    std::vector<double> k_plot(N), noisy_plot(N), smooth_plot(N);
   
     for (int k = 0; k < N; k++) {
         
@@ -56,15 +60,9 @@ int main(int argc, char** argv)
       colvec *z_m = kalman.GetCurrentEstimatedOutput();
       colvec *x_m = kalman.GetCurrentEstimatedState();
       
-      k_plot.at(k) = k;
-      noisy_plot.at(k) =  z_measurement.at(0,0);
-      smooth_plot.at(k) = z_m->at(0,0);
+      log_file << k << '\t' << z_measurement.at(0,0) << '\t' << z_m->at(0,0)  
+               << '\n'; 
     }
-    
-    plt::plot(k_plot, noisy_plot, "r+",{{"label","Measurement"}});
-    plt::plot(k_plot, smooth_plot,{{"label","Estimated"}});
-    plt::legend();
-    plt::show();
-    
+
     return 0;
   }

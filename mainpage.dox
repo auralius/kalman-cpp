@@ -1,10 +1,10 @@
 /*!
 \mainpage kalman-cpp
 
-\section linear-kalman Kalman filter for a linear system
+\section linear-kalman Kalman Filter for Linear Systems
 \subsection definition_kf Definition
 
-A linear system is described by:
+A linear system is described as follows.
 \f[x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}\f]
 \f[z_k = Hx_k + w_k\f]
 where:\n
@@ -20,7 +20,7 @@ The noise covariance matrices must follow these conditions:\n
 \f[Q = Q^T\f]
 \f[R = R^T\f]
 
-\subsection example_kf Example
+\subsection example_kf Examples
 
 An example provided in main1.cpp solves
 <a href="http://www.mathworks.com/matlabcentral/fileexchange/18465-learning-the-kalman-filter-in-simulink-v2-1/content/html/runkalmanfilter.html">the car voltmeter problem</a> using this library. 
@@ -61,13 +61,13 @@ The last step is to run the Kalman iteratively as shown in the codes below.
 for (int k = 0; k < 100; k++) {
   kalman.Kalmanf(u);
   
-  /* The rest of the code ... */
+  // The rest of the code 
 }
 \endcode
 
 @image HTML ../images/ex1.png
 
-\section non-linear-kalman Extended Kalman filter for a nonlinear system
+\section non-linear-kalman Extended Kalman Filter (EKF) for nonlinear systems
 \subsection definition_ekf Definition
 
 A non-linear system is described by:
@@ -86,15 +86,16 @@ The noise covariance matrices must follow these conditions:\n
 \f[R = R^T\f]
 
 \subsection example_ekf Example
- Here, main4.cpp is taken as an example which is adapted from this  
+
+ Here, main4.cpp is taken as an example which is originally adapted from this  
  <a href="http://ch.mathworks.com/matlabcentral/fileexchange/38302-kalman-filter-package/content//Kalman%20Filter%20Package/Examples/ExtendedKalmanFilterDemo.m">MATLAB Central page.</a> 
- The nonlinear system is described as:
+ The nonlinear system is described as follows.
 
 \f[ f = \begin{bmatrix} sin(x_2(k-1))(k-1) \\ x_2(k-1) \end{bmatrix} \f]
 \f[ h = \begin{bmatrix} x_1(k) \\ x_2(k) \end{bmatrix} \f]
 \f[ x_0 = \begin{bmatrix} 0 \\ \frac{1 \pi}{500} \end{bmatrix}\f]
 
-Class EKF needs to be derived to allow flexible implementation of the dynamic model and the measurement model of the system .
+The EKF class needs to be derived to allow flexible implementation of the dynamic model as well as the measurement model of the current system .
 
 \code{.cpp}
 class MyEKF: public EKF
@@ -116,17 +117,20 @@ public:
 };
 \endcode
 
-The following steps are similiar with the previous example as in the linear Kalman filter. 
-We start by defining the number of states and outputs, then followed by creating matrix Q and R.
-An instance of class EKF is created afterward and the states are initialized.
+The following steps are very similiar to the previous example as in the linear Kalman filter. 
+First, we start by defining the number of states and outputs. 
+Next, we derive the two functions: the process and the output function, in order to implement the system that we have. 
+Afterwards, we continue with creating and initializing the two matrices: Q and R.
+Finally, an instance of EKF class is created afterwards followed by initialization of state variables.
+
 
 \code{.cpp}
 int main(int argc, char** argv)
 {
-  /* 
-   * Log the result into a tab delimitted file, later we can open 
-   * it with Matlab. Use: plot_data4.m to plot the results.
-   */
+   //
+   // Log the result into a tab delimitted file, later we can open 
+   // it with Matlab. Use: plot_data4.m to plot the results.
+   //
   ofstream log_file;
   log_file.open("log_file4.txt");
   
@@ -172,7 +176,107 @@ int main(int argc, char** argv)
 
 @image HTML ../images/ex4.png
 
-\section practical-application Practical application: Using Kalman filter for smoothing noisy measurement data 
+\section unscented-kalman Unscented Kalman Filter (UKF) for a nonlinear system
+
+Another type of Kalman Filter for a nonlinear system is the Unscented Kalman Filter. 
+It addresses the accuracy problem which arises during linearization process of an Extended Kalman filter when Jacobian is used.
+The Unscented Kalman Filter is implemented in class UKF.
+
+The steps for using UKF class is exactly similiar as in using EKF class. 
+First, we start by defining the number of states and outputs. 
+Next, we derive the two functions: the process and the output function, in order to implement the system that we have. 
+Afterwards, we continue with creating and initializing the two matrices: Q and R.
+Finally, an instance of UKF class is created afterwards followed by initialization of state variables.
+
+The implementation of the UKF is based on the following paper.
+
+Wan, E. A., & Van Der Merwe, R. (2006). The unscented Kalman filter for nonlinear estimation. Proceedings of the IEEE 2000 Adaptive Systems for Signal Processing, Communications, and Control Symposium (Cat. No.00EX373), 31(2), 153–158. 
+
+The paper can be downloaded from <a href="https://doi.org/10.1109/ASSPCC.2000.882463">here</a>.
+
+\subsection example_ukf Example
+
+Here, we take main10.cpp as an example. This example is adapted from this  
+
+This example is taken from <a href="https://www.mathworks.com/matlabcentral/fileexchange/18217-learning-the-unscented-kalman-filter">here</a>. The nonlinear system is described as follows.
+
+\f[ f = \begin{bmatrix} x_2(k) \\ x_3(k) \\ 0.005 \, x_1(k) \bigg(x_2(k) + x_3(k) \bigg) \end{bmatrix} \f]
+\f[ h = \begin{bmatrix} x_1(k) \end{bmatrix} \f]
+\f[ x_0 = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}\f]
+
+The following lines of codes show how to use the UKF class. As mentioned before, we need to first derive the UKF class and define the virtual functions f (process function) and h (output function).
+
+\code{.cpp}
+
+class MyUKF : public UKF
+{
+public:
+    virtual colvec f(const colvec& x, const colvec& u) {
+        colvec xk(nStates_);
+        xk.at(0) = x(1);
+        xk.at(1) = x(2);
+        xk.at(2) = 0.05*x(0)*(x(1)+x(2));
+        return xk;
+    }
+
+    virtual colvec h(const colvec& x) {
+        colvec zk(nOutputs_);
+        zk(0) = x(0);
+        return zk;
+    }
+};
+
+/////////////////////////////////////////////////////////////////////////////
+
+int main(int argc, char** argv)
+{
+    mat Q(3, 3);
+    mat R(1, 1);
+
+
+    MyUKF myukf;
+
+    double r = 0.1;
+    double q = 0.1;
+    
+    Q = eye(3,3)*q*q;
+    R << r*r << endr;
+
+    colvec x0(3);
+    x0 << 0 << 0 << 1;
+
+    mat P0 = eye<mat>(3, 3);
+    P0 =  P0;
+
+    colvec u;
+
+    // No inputs
+    u = u.zeros();
+
+    myukf.InitSystem(3, 1, Q, R);
+    myukf.InitSystemState(x0);
+    myukf.InitSystemStateCovariance(P0);
+
+    for (int k = 0; k < 20; k++) {
+        myukf.UKalmanf(u);
+
+        colvec *x = myukf.GetCurrentState();
+        colvec *x_m = myukf.GetCurrentEstimatedState();
+        colvec *z = myukf.GetCurrentOutput();
+        colvec *z_m = myukf.GetCurrentEstimatedOutput();
+    }
+
+    return 0;
+}
+
+\endcode
+
+These are the plots that show comparisons between measurements and estimations of the three states: \f$x_1\f$, \f$x_2\f$ and \f$x_3\f$.
+
+@image HTML ../images/ex10.png
+
+
+\section practical-application Practical application: Kalman filter for noisy measurements 
 
 The examples we have so far are theoritical. Very often what we would like to do is simply to 
 reduce noise from preacquired measurement data. There are several reason why we want to use Kalman filter. 
@@ -184,7 +288,7 @@ In this scenario, we only need to supply \f$u_k\f$ to the Kalman filter function
 Here, the Kalman filter gives us four outputs, which are: \f$x_k\f$, \f$z_k\f$, \f$\hat{x}_k\f$, and \f$\hat{z}_k\f$.
 \f$x_k\f$ and \f$z_k\f$ are called the true states and the true outputs, respectvely. They are noisy.
 \f$\hat{x}_k\f$, and \f$\hat{z}_k\f$ are called the estimated states and the estimated outputs, respectively. 
-They are filtered, look smoother and closer ti the noisless true states.
+They are filtered, look smoother and closer to the noisless true states.
 
 The function prototype for this scenario can be written as:
 [\f$x_k\f$, \f$z_k\f$, \f$\hat{x}_k\f$, \f$\hat{z}_k\f$] = function kalmanf( \f$u_k\f$)
@@ -242,47 +346,48 @@ The final codes will look like as the following:
 \code{.cpp}
 int main(int argc, char** argv)
 {      
-   /*
-    * Define the system and initialize the Kalman filter
-    */
-    mat A(1,1), B(1,1), H(1,1), Q(1,1), R(1,1);
-    colvec u(1);
-    colvec x0(1);  
-
-    A << 1;
-    B << 1;
-    Q << 0.01; // Heuristic tuning parameter
-    H << 1;
-    R << 1;    // Heuristic tuning parameter
-    u << 0;
-
-    KF kalman;
-    kalman.InitSystem(A, B, H, Q, R);
-
-   /*
-    * For plotting with matplotlibcpp
-    */
-    int N = 500;
-    std::vector<double> k_plot(N), noisy_plot(500), smooth_plot(N);
-
-    for (int k = 0; k < N; k++) {
+  // Log the result into a tab delimitted file, later we can open 
+  // it with Matlab. Use: plot_data7.m to plot the results.
+  
+  ofstream log_file;
+  log_file.open("log_file7.txt");
+  
+  // Define the system and initialize the Kalman filter
+   
+  mat A(1,1), B(1,1), H(1,1), Q(1,1), R(1,1);
+  colvec u(1);
+  colvec x0(1);  
+    
+  A << 1;
+  B << 1;
+  Q << 0.01; // Heuristic tuning parameter
+  H << 1;
+  R << 1;    // Heuristic tuning parameter
+  u << 0;
+    
+  KF kalman;
+  kalman.InitSystem(A, B, H, Q, R);
+    
+  int N = 500;
+  
+  for (int k = 0; k < N; k++) {
         
-        // Assume we have a noisy signal that is acquired from a measurement tool
-        double w = 2; // Stdev of the noise, in reality we don't know this
-        colvec z_measurement(1);
-        z_measurement.randn(1);
-        z_measurement = z_measurement * w + 12.0;
-        
-        // Put the z_measurment to the Kalman filter
-        kalman.Kalmanf(z_measurement, u);
-        
-        colvec *z_m = kalman.GetCurrentEstimatedOutput();
-        colvec *x_m = kalman.GetCurrentEstimatedState();
-        
-        k_plot.at(k) = k;
-        noisy_plot.at(k) =  z_measurement.at(0,0);
-        smooth_plot.at(k) = z_m->at(0,0);
-    }
+    // Assume we have a noisy signal that is acquired from a measurement tool
+    double w = 2; // Stdev of the noise, in reality we don't know this
+    colvec z_measurement(1);
+    z_measurement.randn(1);
+    z_measurement = z_measurement * w + 12.0;
+      
+    // Put the z_measurment to the Kalman filter
+    kalman.Kalmanf(z_measurement, u);
+      
+    colvec *z_m = kalman.GetCurrentEstimatedOutput();
+    colvec *x_m = kalman.GetCurrentEstimatedState();
+     
+    log_file << k << '\t' << z_measurement.at(0,0) << '\t' << z_m->at(0,0)  
+             << '\n'; 
+  }
+  return 0;
 }
 \endcode
 

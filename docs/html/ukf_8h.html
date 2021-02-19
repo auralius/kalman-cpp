@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>kalman-cpp: kalman/kf.h File Reference</title>
+<title>kalman-cpp: kalman/ukf.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('kf_8h.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('ukf_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -70,49 +70,53 @@ $(document).ready(function(){initNavTree('kf_8h.html',''); initResizable(); });
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">kf.h File Reference</div>  </div>
+<div class="title">ukf.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Header file for the Kalman filter, for a linear system.  
+<p>Header file for the Unscented Kalman filter (<a class="el" href="class_u_k_f.html" title="Implemetation of the Unscented Kalman filter. This class needs to be derived.">UKF</a>).  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;math.h&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;armadillo&gt;</code><br />
 </div>
-<p><a href="kf_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="ukf_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_k_f.html">KF</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemetation of the Kalman filter.  <a href="class_k_f.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_k_f.html">UKF</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemetation of the Unscented Kalman filter. This class needs to be derived.  <a href="class_u_k_f.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a525335710b53cb064ca56b936120431e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kf_8h.html#a525335710b53cb064ca56b936120431e">_USE_MATH_DEFINES</a></td></tr>
+<tr class="memitem:a525335710b53cb064ca56b936120431e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ukf_8h.html#a525335710b53cb064ca56b936120431e">_USE_MATH_DEFINES</a></td></tr>
 <tr class="separator:a525335710b53cb064ca56b936120431e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Header file for the Kalman filter, for a linear system. </p>
+<div class="textblock"><p>Header file for the Unscented Kalman filter (<a class="el" href="class_u_k_f.html" title="Implemetation of the Unscented Kalman filter. This class needs to be derived.">UKF</a>). </p>
 <dl class="section author"><dt>Author</dt><dd>Auralius Manurung </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>18 Apr 2015 Define a system: <p class="formulaDsp">
-\[x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}\]
+<dl class="section date"><dt>Date</dt><dd>13 Peb 2021 </dd></dl>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>The implementation is based on the paper: Wan, E. A., &amp; Van Der Merwe, R. (2006). The unscented Kalman filter for nonlinear estimation. Proceedings of the IEEE 2000 Adaptive Systems for Signal Processing, Communications, and Control Symposium (Cat. No.00EX373), 31(2), 153–158. <a href="https://doi.org/10.1109/ASSPCC.2000.882463">https://doi.org/10.1109/ASSPCC.2000.882463</a><br  />
+<br  />
+Define a non-linear discrete-time process: </p><p class="formulaDsp">
+\[x_k = f(x_{k-1}, u_{k-1}) + v_{k-1}\]
 </p>
  <p class="formulaDsp">
-\[z_k = Hx_k + w_k\]
+\[z_k = h(x_k) + w_k\]
 </p>
- where:<br  />
+<p> where:<br  />
+ \(f\) is the dynamic model of the system<br  />
+ \(h\) is the measurement model of the system<br  />
  \(v\) is the process noise (Gaussian with covariance Q)<br  />
  <br  />
  \(w\) is the measurement noise (Gaussian with covariance R)<br  />
- \(A\) is the system matrix<br  />
- \(B\) is the input matrix<br  />
- \(H\) is the output matrix<br  />
  \(x\) is the state vector<br  />
  \(z\) is the output vector<br  />
  \(u\) is the input vector<br  />
-</dd></dl>
+</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a525335710b53cb064ca56b936120431e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a525335710b53cb064ca56b936120431e">&#9670;&nbsp;</a></span>_USE_MATH_DEFINES</h2>
@@ -133,7 +137,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_dc133b73f91f0e3b4287924ed00a2a00.html">kalman</a></li><li class="navelem"><a class="el" href="kf_8h.html">kf.h</a></li>
+    <li class="navelem"><a class="el" href="dir_dc133b73f91f0e3b4287924ed00a2a00.html">kalman</a></li><li class="navelem"><a class="el" href="ukf_8h.html">ukf.h</a></li>
     <li class="footer">Generated on Fri Feb 19 2021 08:49:07 for kalman-cpp by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
