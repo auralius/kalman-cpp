@@ -11,16 +11,16 @@
  * Communications, and Control Symposium (Cat. No.00EX373), 31(2), 
  * 153–158. https://doi.org/10.1109/ASSPCC.2000.882463\n\n
  * Define a non-linear discrete-time process: 
- * \f[x_k = f(x_{k-1}, u_{k-1}) + v_{k-1}\f]
- * \f[z_k = h(x_k) + w_k\f]
+ * $$x_k = f(x_{k-1}, u_{k-1}) + v_{k-1}$$
+ * $$z_k = h(x_k) + w_k$$
  * where:\n 
- * \f$f\f$ is the dynamic model of the system\n
- * \f$h\f$ is the measurement model of the system\n
- * \f$v\f$ is the process noise (Gaussian with covariance Q)\n  
- * \f$w\f$ is the measurement noise (Gaussian with covariance R)\n 
- * \f$x\f$ is the state vector\n
- * \f$z\f$ is the output vector\n
- * \f$u\f$ is the input vector\n
+ * $f$ is the dynamic model of the system\n
+ * $h$ is the measurement model of the system\n
+ * $v$ is the process noise (Gaussian with covariance Q)\n  
+ * $w$ is the measurement noise (Gaussian with covariance R)\n 
+ * $x$ is the state vector\n
+ * $z$ is the output vector\n
+ * $u$ is the input vector\n
  */
 
 #ifndef EKF_H
@@ -106,27 +106,27 @@ public:
   
  /*!
   * @brief Get current simulated true state.
-  * @return Current simulated state of the system \f$x_k\f$
+  * @return Current simulated state of the system $x_k$
   */
   colvec* GetCurrentState();
   
  /*!
   * @brief Get current simulated true output.
   * This is analogous to the measurements.
-  * @return Current simulated output \f$z_k\f$
+  * @return Current simulated output $z_k$
   */
   colvec* GetCurrentOutput();
   
  /*!
   * @brief Get current estimated state.
   * This is analogous to the filtered measurements.
-  * @return Current estimated state \f$\hat{x}_k\f$
+  * @return Current estimated state $\hat{x}_k$
   */
   colvec* GetCurrentEstimatedState();
   
  /*!
   * @brief Get current estimated output.
-  * @return Current estimated output \f$\hat{z}_k\f$
+  * @return Current estimated output $\hat{z}_k$
   */
   colvec* GetCurrentEstimatedOutput();
   

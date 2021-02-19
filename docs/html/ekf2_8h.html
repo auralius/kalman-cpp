@@ -16,7 +16,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
-    jax: ["input/TeX","output/HTML-CSS"],
+    jax: ["input/TeX","output/NativeMML"],
 });
 </script>
 <script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
@@ -99,20 +99,14 @@ Macros</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>25 Jan 2017 </dd></dl>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-<p>Define a non-linear discrete-time process: </p><p class="formulaDsp">
-\[x_k = f(x_{k-1}, u_{k-1}) + v_{k-1}\]
-</p>
- <p class="formulaDsp">
-\[z_k = h(x_k) + w_k\]
-</p>
-<p> where:<br  />
- \(f\) is the dynamic model of the system<br  />
- \(h\) is the measurement model of the system<br  />
- \(v\) is the process noise (Gaussian with covariance Q)<br  />
- \(w\) is the measurement noise (Gaussian with covariance R)<br  />
- \(x\) is the state vector<br  />
- \(z\) is the output vector<br  />
- \(u\) is the input vector<br  />
+<p>Define a non-linear discrete-time process: $$x_k = f(x_{k-1}, u_{k-1}) + v_{k-1}$$ $$z_k = h(x_k) + w_k$$ where:<br  />
+$f$ is the dynamic model of the system<br  />
+$h$ is the measurement model of the system<br  />
+$v$ is the process noise (Gaussian with covariance Q)<br  />
+$w$ is the measurement noise (Gaussian with covariance R)<br  />
+$x$ is the state vector<br  />
+$z$ is the output vector<br  />
+$u$ is the input vector<br  />
 </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a525335710b53cb064ca56b936120431e"></a>
@@ -135,7 +129,7 @@ DESCRIPTION</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc133b73f91f0e3b4287924ed00a2a00.html">kalman</a></li><li class="navelem"><a class="el" href="ekf2_8h.html">ekf2.h</a></li>
-    <li class="footer">Generated on Fri Feb 19 2021 08:49:07 for kalman-cpp by
+    <li class="footer">Generated on Fri Feb 19 2021 12:10:24 for kalman-cpp by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -16,7 +16,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
-    jax: ["input/TeX","output/HTML-CSS"],
+    jax: ["input/TeX","output/NativeMML"],
 });
 </script>
 <script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
@@ -98,19 +98,10 @@ Macros</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>28 Jan 2017 </dd></dl>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
-<p>Example: A function of vector, with 3 input parameters and 2 output parameters. </p><p class="formulaDsp">
-\[y = \begin{bmatrix} f_1(x_1,x_2,x_3) \\ f_2(x_1,x_2,x_3) \end{bmatrix} \]
-</p>
- <p class="formulaDsp">
-\[Jac(y)=\begin{bmatrix} \frac{\partial f_1}{\partial x_1} \frac{\partial f_1}{\partial x_2} \frac{\partial f_1}{\partial x_3} \\ \frac{\partial f_2}{\partial x_1} \frac{\partial f_2}{\partial x_2} \frac{\partial f_2}{\partial x_3} \end{bmatrix} \]
-</p>
-<p class="formulaDsp">
-\[Hess(y(1)) =\begin{bmatrix} \frac{\partial^2 f_1}{\partial x_1^2} \frac{\partial^2 f_1}{\partial x_1 \partial x_2} \frac{\partial^2 f_1}{\partial x_1 \partial x_3} \\ \frac{\partial^2 f_1}{\partial x_2 \partial x_1} \frac{\partial^2 f_1}{\partial x_2^2} \frac{\partial^2 f_1}{\partial x_2 \partial x_3} \\ \frac{\partial^2 f_1}{\partial x_3 \partial x_1} \frac{\partial^2 f_1}{\partial x_3 \partial x_2} \frac{\partial^2 f_1}{\partial x_3^2} \end{bmatrix} \]
-</p>
-<p class="formulaDsp">
-\[Hess(y(2)) =\begin{bmatrix} \frac{\partial^2 f_2}{\partial x_1^2} \frac{\partial^2 f_2}{\partial x_1 \partial x_2} \frac{\partial^2 f_2}{\partial x_1 \partial x_3} \\ \frac{\partial^2 f_2}{\partial x_2 \partial x_1} \frac{\partial^2 f_2}{\partial x_2^2} \frac{\partial^2 f_2}{\partial x_2 \partial x_3} \\ \frac{\partial^2 f_2}{\partial x_3 \partial x_1} \frac{\partial^2 f_2}{\partial x_3 \partial x_2} \frac{\partial^2 f_2}{\partial x_3^2} \end{bmatrix} \]
-</p>
- </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<p>Example: A function of vector, with 3 input parameters and 2 output parameters. $$y = \begin{bmatrix} f_1(x_1,x_2,x_3) \ f_2(x_1,x_2,x_3) \end{bmatrix} $$ $$Jac(y)=\begin{bmatrix} \frac{\partial f_1}{\partial x_1} \frac{\partial f_1}{\partial x_2} \frac{\partial f_1}{\partial x_3} \ \frac{\partial f_2}{\partial x_1} \frac{\partial f_2}{\partial x_2} \frac{\partial f_2}{\partial x_3} \end{bmatrix} $$</p>
+<p>$$Hess(y(1)) =\begin{bmatrix} \frac{\partial^2 f_1}{\partial x_1^2} \frac{\partial^2 f_1}{\partial x_1 \partial x_2} \frac{\partial^2 f_1}{\partial x_1 \partial x_3} \ \frac{\partial^2 f_1}{\partial x_2 \partial x_1} \frac{\partial^2 f_1}{\partial x_2^2} \frac{\partial^2 f_1}{\partial x_2 \partial x_3} \ \frac{\partial^2 f_1}{\partial x_3 \partial x_1} \frac{\partial^2 f_1}{\partial x_3 \partial x_2} \frac{\partial^2 f_1}{\partial x_3^2} \end{bmatrix} $$</p>
+<p>$$Hess(y(2)) =\begin{bmatrix} \frac{\partial^2 f_2}{\partial x_1^2} \frac{\partial^2 f_2}{\partial x_1 \partial x_2} \frac{\partial^2 f_2}{\partial x_1 \partial x_3} \ \frac{\partial^2 f_2}{\partial x_2 \partial x_1} \frac{\partial^2 f_2}{\partial x_2^2} \frac{\partial^2 f_2}{\partial x_2 \partial x_3} \ \frac{\partial^2 f_2}{\partial x_3 \partial x_1} \frac{\partial^2 f_2}{\partial x_3 \partial x_2} \frac{\partial^2 f_2}{\partial x_3^2} \end{bmatrix} $$ </p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a525335710b53cb064ca56b936120431e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a525335710b53cb064ca56b936120431e">&#9670;&nbsp;</a></span>_USE_MATH_DEFINES</h2>
 
@@ -131,7 +122,7 @@ DESCRIPTION</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc133b73f91f0e3b4287924ed00a2a00.html">kalman</a></li><li class="navelem"><a class="el" href="fx_8h.html">fx.h</a></li>
-    <li class="footer">Generated on Fri Feb 19 2021 08:49:07 for kalman-cpp by
+    <li class="footer">Generated on Fri Feb 19 2021 12:10:24 for kalman-cpp by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

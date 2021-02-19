@@ -11,12 +11,12 @@ p.reference, p.definition {
 /* @group Heading Levels */
 
 h1.groupheader {
-	font-size: 150%;
+	font-size: 100%;
 }
 
 .title {
 	font: 400 14px/28px Roboto,sans-serif;
-	font-size: 150%;
+	font-size: 100%;
 	font-weight: bold;
 	margin: 10px 2px;
 }
@@ -24,7 +24,7 @@ h1.groupheader {
 h2.groupheader {
 	border-bottom: 1px solid #879ECB;
 	color: #354C7B;
-	font-size: 150%;
+	font-size: 100%;
 	font-weight: normal;
 	margin-top: 1.75em;
 	padding-top: 8px;

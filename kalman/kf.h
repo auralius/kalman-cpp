@@ -5,17 +5,17 @@
  * @brief Header file for the Kalman filter, for a linear system.
  * 
  * Define a system:
- * \f[x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}\f]
- * \f[z_k = Hx_k + w_k\f]
+ * $$x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}$$
+ * $$z_k = Hx_k + w_k\$$
  * where:\n
- * \f$v\f$ is the process noise (Gaussian with covariance Q)\n  
- * \f$w\f$ is the measurement noise (Gaussian with covariance R)\n 
- * \f$A\f$ is the system matrix\n
- * \f$B\f$ is the input matrix\n
- * \f$H\f$ is the output matrix\n
- * \f$x\f$ is the state vector\n
- * \f$z\f$ is the output vector\n
- * \f$u\f$ is the input vector\n
+ * $v$ is the process noise (Gaussian with covariance Q)\n  
+ * $w$ is the measurement noise (Gaussian with covariance R)\n 
+ * $A$ is the system matrix\n
+ * $B$ is the input matrix\n
+ * $H$ is the output matrix\n
+ * $x$ is the state vector\n
+ * $z$ is the output vector\n
+ * $u$ is the input vector\n
  */
 
 #ifndef KF_H
@@ -83,27 +83,27 @@ public:
  
  /*!
   * @brief Get current simulated true state.
-  * @return Current simulated state \f$x_k\f$
+  * @return Current simulated state $x_k$
   */
   colvec* GetCurrentState();
   
    /*!
   * @brief Get current simulated true output.
   * This is analogous to the measurements.
-  * @return Current simulated output \f$z_k\f$
+  * @return Current simulated output $z_k$
   */
   colvec* GetCurrentOutput();
   
  /*!
   * @brief Get current estimated state.
-  * @return Current estimated state \f$\hat{x}_k\f$
+  * @return Current estimated state $\hat{x}_k$
   */
   colvec* GetCurrentEstimatedState();
   
    /*!
   * @brief Get current estimated output.
   * This is analogous to the filtered measurements.
-  * @return Current estimated output \f$\hat{z}_k\f$
+  * @return Current estimated output $\hat{z}_k$
   */
   colvec* GetCurrentEstimatedOutput();
   
