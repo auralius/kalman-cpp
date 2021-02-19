@@ -16,7 +16,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
-    jax: ["input/TeX","output/NativeMML"],
+    jax: ["input/TeX","output/HTML-CSS"],
 });
 </script>
 <script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
@@ -85,7 +85,7 @@ $(document).ready(function(){initNavTree('kf_8h.html',''); initResizable(); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_k_f.html">KF</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemetation of the Kalman filter.  <a href="class_k_f.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kalman filter implementation, for a linear system.  <a href="class_k_f.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -96,17 +96,26 @@ Macros</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for the Kalman filter, for a linear system. </p>
 <dl class="section author"><dt>Author</dt><dd>Auralius Manurung </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>18 Apr 2015 Define a system: $$x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}$$ $$z_k = Hx_k + w_k$$ where:<br  />
-$v$ is the process noise (Gaussian with covariance Q)<br  />
+<dl class="section date"><dt>Date</dt><dd>18 Apr 2015 </dd></dl>
+<h1><a class="anchor" id="DESCRIPTION"></a>
+DESCRIPTION</h1>
+<p>Define a system: </p><p class="formulaDsp">
+\[x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}\]
+</p>
+ <p class="formulaDsp">
+\[z_k = Hx_k + w_k\]
+</p>
+<p> where:<br  />
+ \(v\) is the process noise (Gaussian with covariance Q)<br  />
  <br  />
- $w$ is the measurement noise (Gaussian with covariance R)<br  />
- $A$ is the system matrix<br  />
-$B$ is the input matrix<br  />
-$H$ is the output matrix<br  />
-$x$ is the state vector<br  />
-$z$ is the output vector<br  />
-$u$ is the input vector<br  />
-</dd></dl>
+ \(w\) is the measurement noise (Gaussian with covariance R)<br  />
+ \(A\) is the system matrix<br  />
+ \(B\) is the input matrix<br  />
+ \(H\) is the output matrix<br  />
+ \(x\) is the state vector<br  />
+ \(z\) is the output vector<br  />
+ \(u\) is the input vector<br  />
+</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a525335710b53cb064ca56b936120431e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a525335710b53cb064ca56b936120431e">&#9670;&nbsp;</a></span>_USE_MATH_DEFINES</h2>
@@ -128,7 +137,7 @@ $u$ is the input vector<br  />
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc133b73f91f0e3b4287924ed00a2a00.html">kalman</a></li><li class="navelem"><a class="el" href="kf_8h.html">kf.h</a></li>
-    <li class="footer">Generated on Fri Feb 19 2021 12:10:24 for kalman-cpp by
+    <li class="footer">Generated on Fri Feb 19 2021 17:02:21 for kalman-cpp by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

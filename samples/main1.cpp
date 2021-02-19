@@ -4,7 +4,8 @@
  * @date 18 Apr 2015
  * 
  * @brief Example for the Kalman filter.
- *
+ * 
+ * @section DESCRIPTION
  * A constant voltage of 12 V is measured as output of a system. This example is taken from 
  *  <a href="http://www.mathworks.com/matlabcentral/fileexchange/18465-learning-the-kalman-filter-in-simulink-v2-1/content/html/runkalmanfilter.html">here</a>.
  *

@@ -4,7 +4,8 @@
  * @date 16 Jan 2017
  * 
  * @brief An example of a Kalman filter practical application.
- *
+ * 
+ * @section DESCRIPTION
  * An example on using Kalman fiter for smoothing measurement data.
  * Assume we have a measurment data. 
  * We will use the second scenario of using Kalman filter.

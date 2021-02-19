@@ -5,6 +5,7 @@
  * 
  * @brief Example for the Kalman filter. 
  * 
+ * @section DESCRIPTION
  * A kinematic system, with position and velocity as the states.
  * Measured output is position.
  */

@@ -4,7 +4,8 @@
  * @date 12 Aug 2015
  * 
  * @brief Example for the extended Kalman filter.
- *
+ * 
+ * @section DESCRIPTION
  * This example is taken from 
  * <a href="http://ch.mathworks.com/matlabcentral/fileexchange/18189-learning-the-extended-kalman-filter">here</a>.
  */

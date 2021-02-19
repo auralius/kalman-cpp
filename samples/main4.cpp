@@ -5,8 +5,8 @@
  * 
  * @brief Example for the extended Kalman filter.
  * 
- * This example is taken from 
- * <a href="http://ch.mathworks.com/matlabcentral/fileexchange/38302-kalman-filter-package/content//Kalman%20Filter%20Package/Examples/ExtendedKalmanFilterDemo.m">here</a>.
+ * @section DESCRIPTION
+ * This example is taken from <a href="http://ch.mathworks.com/matlabcentral/fileexchange/38302-kalman-filter-package/content//Kalman%20Filter%20Package/Examples/ExtendedKalmanFilterDemo.m">here</a>.
  */
 
 #include <fstream>

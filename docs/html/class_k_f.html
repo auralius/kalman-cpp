@@ -16,7 +16,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
-    jax: ["input/TeX","output/NativeMML"],
+    jax: ["input/TeX","output/HTML-CSS"],
 });
 </script>
 <script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
@@ -74,7 +74,7 @@ $(document).ready(function(){initNavTree('class_k_f.html',''); initResizable(); 
 </div><!--header-->
 <div class="contents">
 
-<p>Implemetation of the Kalman filter.  
+<p>Kalman filter implementation, for a linear system.  
  <a href="class_k_f.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="kf_8h_source.html">kf.h</a>&gt;</code></p>
@@ -82,8 +82,10 @@ $(document).ready(function(){initNavTree('class_k_f.html',''); initResizable(); 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac6906ac2754b4ef3f79f45a5b7886fdd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_k_f.html#ac6906ac2754b4ef3f79f45a5b7886fdd">KF</a> ()</td></tr>
+<tr class="memdesc:ac6906ac2754b4ef3f79f45a5b7886fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor, nothing happens here.  <a href="class_k_f.html#ac6906ac2754b4ef3f79f45a5b7886fdd">More...</a><br /></td></tr>
 <tr class="separator:ac6906ac2754b4ef3f79f45a5b7886fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af37a2d3ac0119750e546a895d9e2f279"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_k_f.html#af37a2d3ac0119750e546a895d9e2f279">~KF</a> ()</td></tr>
+<tr class="memdesc:af37a2d3ac0119750e546a895d9e2f279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor, nothing happens here.  <a href="class_k_f.html#af37a2d3ac0119750e546a895d9e2f279">More...</a><br /></td></tr>
 <tr class="separator:af37a2d3ac0119750e546a895d9e2f279"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a890367dd9a8888a2ea8bda296b6128dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_k_f.html#a890367dd9a8888a2ea8bda296b6128dd">InitSystem</a> (const mat &amp;A, const mat &amp;B, const mat &amp;H, const mat &amp;Q, const mat &amp;R)</td></tr>
 <tr class="memdesc:a890367dd9a8888a2ea8bda296b6128dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the system.  <a href="class_k_f.html#a890367dd9a8888a2ea8bda296b6128dd">More...</a><br /></td></tr>
@@ -110,11 +112,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:abcfd6d77410e71d6df11f356ac49e6b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current estimated state.  <a href="class_k_f.html#abcfd6d77410e71d6df11f356ac49e6b7">More...</a><br /></td></tr>
 <tr class="separator:abcfd6d77410e71d6df11f356ac49e6b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5766b144d9d9d4ff395ed546e6071b76"><td class="memItemLeft" align="right" valign="top">colvec *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_k_f.html#a5766b144d9d9d4ff395ed546e6071b76">GetCurrentEstimatedOutput</a> ()</td></tr>
-<tr class="memdesc:a5766b144d9d9d4ff395ed546e6071b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current estimated output. This is analogous to the filtered measurements.  <a href="class_k_f.html#a5766b144d9d9d4ff395ed546e6071b76">More...</a><br /></td></tr>
+<tr class="memdesc:a5766b144d9d9d4ff395ed546e6071b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current estimated output. This is the filtered measurements, with less noise.  <a href="class_k_f.html#a5766b144d9d9d4ff395ed546e6071b76">More...</a><br /></td></tr>
 <tr class="separator:a5766b144d9d9d4ff395ed546e6071b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implemetation of the Kalman filter. </p>
+<div class="textblock"><p>Kalman filter implementation, for a linear system. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac6906ac2754b4ef3f79f45a5b7886fdd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac6906ac2754b4ef3f79f45a5b7886fdd">&#9670;&nbsp;</a></span>KF()</h2>
@@ -130,6 +132,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor, nothing happens here. </p>
 
 </div>
 </div>
@@ -147,6 +151,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destructor, nothing happens here. </p>
 
 </div>
 </div>
@@ -166,7 +172,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get current estimated output. This is analogous to the filtered measurements. </p>
+<p>Get current estimated output. This is the filtered measurements, with less noise. </p>
 <dl class="section return"><dt>Returns</dt><dd>Current estimated output $\hat{z}_k$ </dd></dl>
 
 </div>
@@ -414,7 +420,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_k_f.html">KF</a></li>
-    <li class="footer">Generated on Fri Feb 19 2021 12:10:24 for kalman-cpp by
+    <li class="footer">Generated on Fri Feb 19 2021 17:02:21 for kalman-cpp by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -5,6 +5,7 @@
  * 
  * @brief An example for an Unscented Kalman filter.
  *
+ * @section DESCRIPTION
  * This example is taken from  <a href="http://becs.aalto.fi/en/research/bayes/ekfukf/documentation.pdf">here</a>, 
  * section 3.2: "Tracking a random sine signal".
  */

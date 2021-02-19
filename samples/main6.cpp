@@ -4,7 +4,8 @@
  * @date 12 Aug 2015
  * 
  * @brief Example for the extended Kalman filter.
- *
+ * 
+ * @section DESCRIPTION
  * This example is taken from  <a href="http://becs.aalto.fi/en/research/bayes/ekfukf/documentation.pdf">here</a>, 
  * section 3.2: "Tracking a random sine signal".
  */

@@ -4,18 +4,19 @@
  * @date 18 Apr 2015
  * @brief Header file for the Kalman filter, for a linear system.
  * 
+ * @section DESCRIPTION
  * Define a system:
- * $$x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}$$
- * $$z_k = Hx_k + w_k\$$
+ * \f[x_k = Ax_{k-1} + Bu_{k-1} + v_{k-1}\f]
+ * \f[z_k = Hx_k + w_k\f]
  * where:\n
- * $v$ is the process noise (Gaussian with covariance Q)\n  
- * $w$ is the measurement noise (Gaussian with covariance R)\n 
- * $A$ is the system matrix\n
- * $B$ is the input matrix\n
- * $H$ is the output matrix\n
- * $x$ is the state vector\n
- * $z$ is the output vector\n
- * $u$ is the input vector\n
+ * \f$v\f$ is the process noise (Gaussian with covariance Q)\n  
+ * \f$w\f$ is the measurement noise (Gaussian with covariance R)\n 
+ * \f$A\f$ is the system matrix\n
+ * \f$B\f$ is the input matrix\n
+ * \f$H\f$ is the output matrix\n
+ * \f$x\f$ is the state vector\n
+ * \f$z\f$ is the output vector\n
+ * \f$u\f$ is the input vector\n
  */
 
 #ifndef KF_H
@@ -31,11 +32,17 @@ using namespace std;
 using namespace arma;
 
 /*!
- * @brief Implemetation of the Kalman filter. 
+ * @brief Kalman filter implementation, for a linear system. 
  */
 class KF {
 public:
+  /*!
+   * \brief Constructor, nothing happens here.
+   */
   KF();
+  /*!
+   * \brief Destructor, nothing happens here.
+   */
   ~KF();
   
   /*!
@@ -102,7 +109,7 @@ public:
   
    /*!
   * @brief Get current estimated output.
-  * This is analogous to the filtered measurements.
+  * This is the filtered measurements, with less noise.
   * @return Current estimated output $\hat{z}_k$
   */
   colvec* GetCurrentEstimatedOutput();

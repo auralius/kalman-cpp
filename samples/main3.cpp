@@ -5,6 +5,7 @@
  * 
  * @brief Example for the Kalman filter.
  * 
+ * @section DESCRIPTION
  * A system in x-y plane, a kinematic system, with position and velocity as the states.
  * The system has 4 input states (\f$x\f$, \f$y\f$, \f$\dot{x}\f$, \f$\dot{y}\f$).
  * and 2 output states (\f$x\f$, \f$y\f$).

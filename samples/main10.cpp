@@ -4,9 +4,9 @@
 * @date 14 Peb 2021
 *
 * @brief An example for an Unscented Kalman filter (UKF).
-*
-* This example is taken from <a href="https://www.mathworks.com/matlabcentral/fileexchange/18217-learning-the-unscented-kalman-filter">here</a>,
-* "Learning the Unscented Kalman Filter" by Yi Cao.
+* 
+* @section DESCRIPTION
+* This example is taken from <a href="https://www.mathworks.com/matlabcentral/fileexchange/18217-learning-the-unscented-kalman-filter">here</a>, "Learning the Unscented Kalman Filter" by Yi Cao.
 */
 
 #include <fstream>

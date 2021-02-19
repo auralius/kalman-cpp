@@ -7,20 +7,20 @@
  * @section DESCRIPTION
  * Example:
  * A function of vector, with 3 input parameters and 2 output parameters. 
- * $$y = \begin{bmatrix} f_1(x_1,x_2,x_3) \\ f_2(x_1,x_2,x_3) \end{bmatrix} $$
- * $$Jac(y)=\begin{bmatrix} \frac{\partial f_1}{\partial x_1} \frac{\partial f_1}{\partial x_2} \frac{\partial f_1}{\partial x_3} \\ 
+ * \f[y = \begin{bmatrix} f_1(x_1,x_2,x_3) \\ f_2(x_1,x_2,x_3) \end{bmatrix} \f]
+ * \f[Jac(y)=\begin{bmatrix} \frac{\partial f_1}{\partial x_1} \frac{\partial f_1}{\partial x_2} \frac{\partial f_1}{\partial x_3} \\ 
  *                           \frac{\partial f_2}{\partial x_1} \frac{\partial f_2}{\partial x_2} \frac{\partial f_2}{\partial x_3} 
- *           \end{bmatrix} $$ 
+ *           \end{bmatrix} \f]
  *
- * $$Hess(y(1)) =\begin{bmatrix} \frac{\partial^2 f_1}{\partial x_1^2}              \frac{\partial^2 f_1}{\partial x_1 \partial x_2}   \frac{\partial^2 f_1}{\partial x_1 \partial x_3}   \\
+ * \f[Hess(y(1)) =\begin{bmatrix} \frac{\partial^2 f_1}{\partial x_1^2}              \frac{\partial^2 f_1}{\partial x_1 \partial x_2}   \frac{\partial^2 f_1}{\partial x_1 \partial x_3}   \\
  *                                \frac{\partial^2 f_1}{\partial x_2 \partial x_1}   \frac{\partial^2 f_1}{\partial x_2^2}              \frac{\partial^2 f_1}{\partial x_2 \partial x_3}   \\
  *                                \frac{\partial^2 f_1}{\partial x_3 \partial x_1}   \frac{\partial^2 f_1}{\partial x_3 \partial x_2}   \frac{\partial^2 f_1}{\partial x_3^2}
- *                \end{bmatrix} $$
+ *                \end{bmatrix} \f]
  *
- * $$Hess(y(2)) =\begin{bmatrix} \frac{\partial^2 f_2}{\partial x_1^2}              \frac{\partial^2 f_2}{\partial x_1 \partial x_2}   \frac{\partial^2 f_2}{\partial x_1 \partial x_3}   \\
+ * \f[Hess(y(2)) =\begin{bmatrix} \frac{\partial^2 f_2}{\partial x_1^2}              \frac{\partial^2 f_2}{\partial x_1 \partial x_2}   \frac{\partial^2 f_2}{\partial x_1 \partial x_3}   \\
  *                                \frac{\partial^2 f_2}{\partial x_2 \partial x_1}   \frac{\partial^2 f_2}{\partial x_2^2}              \frac{\partial^2 f_2}{\partial x_2 \partial x_3}   \\
  *                                \frac{\partial^2 f_2}{\partial x_3 \partial x_1}   \frac{\partial^2 f_2}{\partial x_3 \partial x_2}   \frac{\partial^2 f_2}{\partial x_3^2}
- *                \end{bmatrix} $$
+ *                \end{bmatrix} \f]
  *
  */
 
