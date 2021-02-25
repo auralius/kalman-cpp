@@ -2,7 +2,7 @@
 
 ## Kalman filter and extended Kalman filter implementation in C++ 
 
-What have been implemeted:  
+Implemented filters so far: 
 * Kalman filter  
 * Extended Kalman filter  
 * Second order extended Kalman filter  
