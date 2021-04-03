@@ -22,6 +22,16 @@ MathJax.Hub.Config({
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<<<<<<< HEAD
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript/MathJax.js"></script>
+=======
+>>>>>>> c467bb8b4126460c1e18ba28ee4392f49fdc6552
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -102,8 +112,12 @@ The noise covariance matrices must follow these conditions:<br  />
 </p>
 <h2><a class="anchor" id="example_kf"></a>
 Examples</h2>
+<<<<<<< HEAD
+<p>An example is provided in <a class="el" href="main1_8cpp.html" title="Example for the Kalman filter.">main1.cpp</a> solves <a href="http://www.mathworks.com/matlabcentral/fileexchange/18465-learning-the-kalman-filter-in-simulink-v2-1/content/html/runkalmanfilter.html">the car voltmeter problem</a> using this library. The system model for this problem is governed by: <br  />
+=======
 <p>An example provided in <a class="el" href="main1_8cpp.html" title="Example for the Kalman filter.">main1.cpp</a> solves<a href="http://www.
   works.com/matlabcentral/fileexchange/18465-learning-the-kalman-filter-in-simulink-v2-1/content/html/runkalmanfilter.html">the car voltmeter problem</a> using this library. The system model for this problem is governed by: <br  />
+>>>>>>> c467bb8b4126460c1e18ba28ee4392f49fdc6552
  </p><p class="formulaDsp">
 \[x_k = 12 + v_{k-1}\]
 </p>
@@ -111,8 +125,7 @@ Examples</h2>
 \[z_k = x_k + w_ḳ\]
 </p>
 <p> <br  />
-Therefore, we can summarize: \(A = 0\), \(B = 1\), \(H = 1\), \(u = 12\), \(x_0 = 12\), \(Q=4\), and \(R=4\). These values are the put into the following lines of codes. <br  />
-<br  />
+Let us extract the model parameters from the equation above: \(A = 0\), \(B = 1\), \(H = 1\), \(u = 12\), \(x_0 = 12\), \(Q=4\), and \(R=4\). Now that we know all the parameter values, we can then set up the following piece of code: <br  />
 </p><div class="fragment"><div class="line">mat A(1,1), B(1,1), H(1,1), Q(1,1), R(1,1);</div>
 <div class="line">colvec u(1);  </div>
 <div class="line"> </div>
@@ -122,17 +135,13 @@ Therefore, we can summarize: \(A = 0\), \(B = 1\), \(H = 1\), \(u = 12\), \(x_0 
 <div class="line">H &lt;&lt; 1;</div>
 <div class="line">R &lt;&lt; 4;</div>
 <div class="line">u &lt;&lt; 12.0;</div>
-</div><!-- fragment --><p> <br  />
-<br  />
-The first line of the code above is used to create all necessary matrices with correct dimensions. All matrix operations use the Armadillo library. Please refer to the Armadillo documentation on how to create a matrix and set its element values. The next step is to create an instance of class <a class="el" href="class_k_f.html" title="Kalman filter implementation, for a linear system.">KF</a> and initialize it with the newly created \(A\), \(B\), \(Q\), \(H\), and \(R\). <br  />
+</div><!-- fragment --><p>The first and second line of the code above are used to create all the necessary matrices with correct dimensions. In the following lines, we apply the correct value for each matrix.</p>
+<p>Our next step is to create an instance of class class and initialize it with the previously created \(A\), \(B\), \(Q\), \(H\), and \(R\) matrices. <br  />
 </p><div class="fragment"><div class="line"><a class="code" href="class_k_f.html">KF</a> kalman;</div>
 <div class="line">kalman.<a class="code" href="class_k_f.html#a890367dd9a8888a2ea8bda296b6128dd">InitSystem</a>(A, B, H, Q, R);</div>
 <div class="ttc" id="aclass_k_f_html"><div class="ttname"><a href="class_k_f.html">KF</a></div><div class="ttdoc">Kalman filter implementation, for a linear system.</div><div class="ttdef"><b>Definition:</b> kf.h:37</div></div>
 <div class="ttc" id="aclass_k_f_html_a890367dd9a8888a2ea8bda296b6128dd"><div class="ttname"><a href="class_k_f.html#a890367dd9a8888a2ea8bda296b6128dd">KF::InitSystem</a></div><div class="ttdeci">void InitSystem(const mat &amp;A, const mat &amp;B, const mat &amp;H, const mat &amp;Q, const mat &amp;R)</div><div class="ttdoc">Define the system.</div><div class="ttdef"><b>Definition:</b> kf.cpp:20</div></div>
-</div><!-- fragment --><p> <br  />
-<br  />
-The last step is to run the Kalman iteratively as shown in the codes below. <br  />
-<br  />
+</div><!-- fragment --><p>And or our last step, we run the Kalman procedure repetitively as shown in the code below. <br  />
 </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; 100; k++) {</div>
 <div class="line">  kalman.<a class="code" href="class_k_f.html#acc63e676e77b8a6b1ccbb88dec545d99">Kalmanf</a>(u);</div>
 <div class="line">  </div>
@@ -172,10 +181,10 @@ The noise covariance matrices must follow these conditions:<br  />
 </p>
 <h2><a class="anchor" id="example_ekf"></a>
 Example</h2>
-<p>Here, <a class="el" href="main4_8cpp.html" title="Example for the extended Kalman filter.">main4.cpp</a> is taken as an example which is originally adapted from this <br  />
+<p>Here, let us take <a class="el" href="main4_8cpp.html" title="Example for the extended Kalman filter.">main4.cpp</a> as an example. This content of this file is adapted from this <br  />
  <a href="http://ch.mathworks.com/matlabcentral/fileexchange/38302-kalman-filter-package/content//Kalman%20Filter%20Package/Examples/ExtendedKalmanFilterDemo.m">MATLAB Central page.</a> <br  />
 <br  />
-The nonlinear system is described as follows. <br  />
+Let us define a nonlinear system as follows. <br  />
 <br  />
  </p><p class="formulaDsp">
 \[ f = \begin{bmatrix} \sin(x_2(k-1))(k-1) \\ x_2(k-1) \end{bmatrix} \]
@@ -187,8 +196,7 @@ The nonlinear system is described as follows. <br  />
 \[ x_0 = \begin{bmatrix} 0 \\ \frac{1 \pi}{500} \end{bmatrix}\]
 </p>
 <p> <br  />
-The <a class="el" href="class_e_k_f.html" title="Implemetation of the extended Kalman filter. This class needs to be derived.">EKF</a> class needs to be derived to allow flexible implementation of the dynamic model as well as the measurement model of the current system . <br  />
-<br  />
+A nonlinear function does not have a strict tempate as in a linear function. Therefore, we need to let the user to derive the <a class="el" href="class_e_k_f.html" title="Implemetation of the extended Kalman filter. This class needs to be derived.">EKF</a> class for flexible implementation of a nonlinear model for both the process and the the measurement. <br  />
 </p><div class="fragment"><div class="line"><span class="keyword">class </span>MyEKF: <span class="keyword">public</span> <a class="code" href="class_e_k_f.html">EKF</a></div>
 <div class="line">{</div>
 <div class="line"><span class="keyword">public</span>:  </div>
@@ -209,9 +217,8 @@ The <a class="el" href="class_e_k_f.html" title="Implemetation of the extended K
 <div class="ttc" id="aclass_e_k_f_html"><div class="ttname"><a href="class_e_k_f.html">EKF</a></div><div class="ttdoc">Implemetation of the extended Kalman filter. This class needs to be derived.</div><div class="ttdef"><b>Definition:</b> ekf.h:37</div></div>
 <div class="ttc" id="aclass_e_k_f_html_a6c084d493687d9ad0cf55d8c97c22633"><div class="ttname"><a href="class_e_k_f.html#a6c084d493687d9ad0cf55d8c97c22633">EKF::f</a></div><div class="ttdeci">virtual colvec f(const colvec &amp;x, const colvec &amp;u)</div><div class="ttdoc">Define model of your system.</div><div class="ttdef"><b>Definition:</b> ekf.cpp:60</div></div>
 <div class="ttc" id="aclass_e_k_f_html_acb8638938ff97e5839e02f24860243e5"><div class="ttname"><a href="class_e_k_f.html#acb8638938ff97e5839e02f24860243e5">EKF::h</a></div><div class="ttdeci">virtual colvec h(const colvec &amp;x)</div><div class="ttdoc">Define the output model of your system.</div><div class="ttdef"><b>Definition:</b> ekf.cpp:67</div></div>
-</div><!-- fragment --><p> <br  />
-<br  />
-The following steps are very similiar to the previous example as in the linear Kalman filter. First, we start by defining the number of states and outputs. Next, we derive the two functions: the process and the output function, in order to implement the system that we have. Afterwards, we continue with creating and initializing the two matrices: Q and R. Finally, an instance of <a class="el" href="class_e_k_f.html" title="Implemetation of the extended Kalman filter. This class needs to be derived.">EKF</a> class is created afterwards followed by initialization of state variables. <br  />
+</div><!-- fragment --><p>The next steps below are very similiar to the previous example in the linear Kalman filter section. First, we start by creating all necessary matrices and set their values accordingly. Afterward, we continue with initializing. the covariance matrices as well as the state vector. In the final step, we run the <a class="el" href="class_e_k_f.html" title="Implemetation of the extended Kalman filter. This class needs to be derived.">EKF</a> procedurerepetitively while logging necessary data.</p>
+<p><br  />
 <br  />
 </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code" href="main1_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
 <div class="line">{</div>
@@ -266,15 +273,13 @@ The following steps are very similiar to the previous example as in the linear K
 </div>
 <h1><a class="anchor" id="unscented-kalman"></a>
 Unscented Kalman Filter (UKF) for a nonlinear system</h1>
-<p>Another type of Kalman Filter for a nonlinear system is the Unscented Kalman Filter. It addresses the accuracy problem which arises during linearization process of an Extended Kalman filter when Jacobian is used. The Unscented Kalman Filter is implemented in class <a class="el" href="class_u_k_f.html" title="Implemetation of the Unscented Kalman filter. This class needs to be derived.">UKF</a>. <br  />
+<p>Another type of Kalman Filter for a nonlinear system is the Unscented Kalman Filter. It addresses the accuracy problem which arises during linearization process of an Extended Kalman filter when Jacobian is used. The Unscented Kalman Filter is implemented in class <a class="el" href="class_u_k_f.html" title="Implemetation of the Unscented Kalman filter. This class needs to be derived.">UKF</a> and the steps for using the provided <a class="el" href="class_u_k_f.html" title="Implemetation of the Unscented Kalman filter. This class needs to be derived.">UKF</a> class is exactly similiar as in using the <a class="el" href="class_e_k_f.html" title="Implemetation of the extended Kalman filter. This class needs to be derived.">EKF</a> class. <br  />
 <br  />
-The steps for using <a class="el" href="class_u_k_f.html" title="Implemetation of the Unscented Kalman filter. This class needs to be derived.">UKF</a> class is exactly similiar as in using <a class="el" href="class_e_k_f.html" title="Implemetation of the extended Kalman filter. This class needs to be derived.">EKF</a> class. First, we start by defining the number of states and outputs. Next, we derive the two functions: the process and the output function, in order to implement the system that we have. Afterwards, we continue with creating and initializing the two matrices: Q and R. Finally, an instance of <a class="el" href="class_u_k_f.html" title="Implemetation of the Unscented Kalman filter. This class needs to be derived.">UKF</a> class is created afterwards followed by initialization of state variables. <br  />
-<br  />
-The implementation of the <a class="el" href="class_u_k_f.html" title="Implemetation of the Unscented Kalman filter. This class needs to be derived.">UKF</a> is based on the following paper. <br  />
+The implementation of the <a class="el" href="class_u_k_f.html" title="Implemetation of the Unscented Kalman filter. This class needs to be derived.">UKF</a> in this C++ library is based on the following paper: <br  />
 <br  />
 Wan, E. A., &amp; Van Der Merwe, R. (2006). The unscented Kalman filter for nonlinear estimation. Proceedings of the IEEE 2000 Adaptive Systems for Signal Processing, Communications, and Control Symposium (Cat. No.00EX373), 31(2), 153–158. <br  />
 <br  />
-The paper can be downloaded from<a href="https://doi.org/10.1109/ASSPCC.2000.882463">here</a>.</p>
+The paper above can be downloaded from <a href="https://doi.org/10.1109/ASSPCC.2000.882463">here</a>.</p>
 <h2><a class="anchor" id="example_ukf"></a>
 Example</h2>
 <p>Here, we take <a class="el" href="main10_8cpp.html" title="An example for an Unscented Kalman filter (UKF).">main10.cpp</a> as an example. This example is adapted from this <br  />
@@ -362,19 +367,19 @@ These are the plots that show comparisons between measurements and estimations o
 </div>
 <h1><a class="anchor" id="practical-application"></a>
 Practical application: Kalman filter for noisy measurements</h1>
-<p>The examples we have so far are theoritical. Very often what we would like to do is simply to reduce noise from preacquired measurement data. There are several reason why we want to use Kalman filter. For example, the noise has very wide spectrum, thus, using frequency based filter hurts the data. <br  />
+<p>The examples we have so far are theoretical. Very often, what we would like to do is to reduce noise from pre-acquired measurement data. There are several reasons why we want to use Kalman filter. For example, noise has a vast spectrum. Thus, using a frequency-based filter hurts the data. <br  />
 <br  />
-Principally, there are two scenarios of using the Kalman filter. The first scenario is by first simulating the system as shown in the figure below. <br  />
- In this scenario, we only need to supply \(u_k\) to the Kalman filter function. Here, the Kalman filter gives us four outputs, which are: \(x_k\), \(z_k\), \(\hat{x}_k\), and \(\hat{z}_k\). \(x_k\) and \(z_k\) are called the true states and the true outputs, respectvely. They are noisy. \(\hat{x}_k\), and \(\hat{z}_k\) are called the estimated states and the estimated outputs, respectively. They are filtered, look smoother and closer to the noisless true states. <br  />
+Principally, there are two scenarios of using the Kalman filtering techniquie here. The first scenario is by first simulating the system, as shown in the figure below.</p>
+<p>In this scenario, we only need to supply \(u_k\) to the Kalman filter function. The Kalman procedure will give us four outputs as a result: \(x_k\), \(z_k\), \(\hat{x}_k\), and \(\hat{z}_k\). \(x_k\) and \(z_k\) are called the true states and the true outputs, respectvely. They are noisy. \(\hat{x}_k\), and \(\hat{z}_k\) are called the estimated states and the estimated outputs, respectively. They are filtered, look smoother and closer to the noiseless true states. <br  />
 <br  />
-The function prototype for this scenario can be written as: <br  />
+The function prototype for the scenario above can be written as: <br  />
 [ \(x_k\), \(z_k\), \(\hat{x}_k\), \(\hat{z}_k\)] = function kalmanf( \(u_k\)) <br  />
 </p><div class="image">
 <img src="Kalman_concept1.jpg" alt=""/>
 </div>
 <p> <br  />
 <br  />
-The second scenario is used when the measurements are availble. Thus, simulating the system becomes unnecessary. In this scenario, we need to supply \(z_k\) and \(u_k\) to the kalman filter function. The Kalman filter will give us 2 outputs: \(\hat{x}_k\) (the estimated system sates) and \(\hat{z}_k\) (the estimated system outputs). <br  />
+The second scenario is used when the measurements are available. Thus, simulating the system becomes unnecessary. In such a scenario, we need to supply both \(z_k\) and \(u_k\) to the kalman filter function. The Kalman filter will give us 2 outputs: \(\hat{x}_k\) (the estimated system sates) and \(\hat{z}_k\) (the estimated system outputs). <br  />
 <br  />
 The function prototype for this scenario can be written as: <br  />
 [ \(\hat{x}_k\), \(\hat{z}_k\)] = function kalmanf( \(z_k\), \(u_k\)) <br  />
@@ -386,7 +391,7 @@ The second scenario is useful for smoothing noisy measurment data. However, both
  </p>
 <h2><a class="anchor" id="practical_example"></a>
 Example</h2>
-<p>As an example, we will take the problem in <a class="el" href="main1_8cpp.html" title="Example for the Kalman filter.">main1.cpp</a>. This time, however, we assume we already had several noisy data points from measurements. Therfore, we will not need the Kalman procedure to simulate the system. <br  />
+<p>As one example, let us see the problem provided in <a class="el" href="main1_8cpp.html" title="Example for the Kalman filter.">main1.cpp</a>. This time, however, we assume we have already had several noisy data points from measurements. Therfore, we will not need the Kalman procedure to simulate the system. <br  />
 The system model can be formulated into: <br  />
  </p><p class="formulaDsp">
 \[x_k = x_{k-1} + v_{k-1}\]
@@ -395,16 +400,13 @@ The system model can be formulated into: <br  />
 \[z_k = x_k + w_ḳ\]
 </p>
 <p> <br  />
-We then generate random number as the prerecorded noisy data (<b>z_measurement</b>), as the following: <br  />
-<br  />
+We then generate random number as the prerecorded noisy data (<b>z_measurement</b>), as follows. <br  />
 </p><div class="fragment"><div class="line"><span class="comment">// Assume we have a noisy signal that is acquired from a measurement tool</span></div>
 <div class="line"><span class="keywordtype">double</span> w = 2; <span class="comment">// Stdev of the noise, in reality we don&#39;t know this</span></div>
 <div class="line">colvec z_measurement(1);</div>
 <div class="line">z_measurement.randn(1);</div>
 <div class="line">z_measurement = z_measurement * w + 12.0;</div>
-</div><!-- fragment --><p> <br  />
-<br  />
-After than, <b>z_measurement</b> is then sent to the Kalman filter function, as the following: <br  />
+</div><!-- fragment --><p>After than, <b>z_measurement</b> is sent to the Kalman filter function, as the following: <br  />
 <br  />
 </p><div class="fragment"><div class="line"><span class="comment">// Put the z_measurment to the Kalman filter</span></div>
 <div class="line">kalman.<a class="code" href="class_k_f.html#acc63e676e77b8a6b1ccbb88dec545d99">Kalmanf</a>(z_measurement, u);</div>
@@ -474,7 +476,7 @@ The values that are given to <b>Q</b> and <b>R</b> are defined <b>heuristically<
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Feb 20 2021 06:37:33 for kalman-cpp by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Apr 1 2021 04:15:37 for kalman-cpp by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

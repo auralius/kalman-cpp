@@ -191,8 +191,7 @@ void EKF2::EKalmanf(const colvec& u)
     z_ = h(x_) + w_;
 
     mat Fx = CalcFx(x_m_, u);
-    mat Hx = CalcHx(x_m_);
-    
+        
     // Prior update:
     mat FxxP(zeros(nStates_, 1));
     mat FxxPFxxP(zeros(nStates_, nStates_));
@@ -205,6 +204,8 @@ void EKF2::EKalmanf(const colvec& u)
     x_p_ = f(x_m_, u) + 0.5 * FxxP;
     P_p_ = Fx * P_m_ * trans(Fx) + 0.5 * FxxPFxxP + Q_;
 
+    mat Hx = CalcHx(x_p_);
+    
     // Measurement update:
     colvec HxxP(zeros(nOutputs_));
     colvec HxxPHxxP(zeros(nOutputs_));
@@ -227,8 +228,7 @@ void EKF2::EKalmanf(const colvec& u)
 void EKF2::EKalmanf(const colvec& z, const colvec& u)
 {
     mat Fx = CalcFx(x_m_, u);
-    mat Hx = CalcHx(x_m_);
-    
+        
     // Prior update:
     mat FxxP(zeros(nStates_, 1));
     mat FxxPFxxP(zeros(nStates_, nStates_));
@@ -241,6 +241,8 @@ void EKF2::EKalmanf(const colvec& z, const colvec& u)
     x_p_ = f(x_m_, u) + 0.5 * FxxP;
     P_p_ = Fx * P_m_ * trans(Fx) + 0.5 * FxxPFxxP + Q_;
 
+    mat Hx = CalcHx(x_p_);
+    
     // Measurement update:
     colvec HxxP(zeros(nOutputs_));
     colvec HxxPHxxP(zeros(nOutputs_));

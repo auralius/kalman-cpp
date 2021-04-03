@@ -134,11 +134,12 @@ void EKF::EKalmanf(const colvec& u)
   z_ = h(x_) + w_;
   
   CalcF(x_m_, u);
-  CalcH(x_m_);
-  
+    
   // Prior update:
   x_p_ = f(x_m_, u);
   P_p_ = F_ * P_m_ * trans(F_) + Q_;
+  
+  CalcH(x_p_);
   
   // Measurement update:
   mat K = P_p_ * trans(H_) * inv(H_ * P_p_ * trans(H_) + R_);
@@ -152,11 +153,12 @@ void EKF::EKalmanf(const colvec& u)
 void EKF::EKalmanf(const colvec& z, const colvec& u)
 {    
   CalcF(x_m_, u);
-  CalcH(x_m_);
   
   // Prior update:
   x_p_ = f(x_m_, u);
   P_p_ = F_ * P_m_ * trans(F_) + Q_;
+  
+  CalcH(x_p_);
   
   // Measurement update:
   mat K = P_p_ * trans(H_) * inv(H_ * P_p_ * trans(H_) + R_);
