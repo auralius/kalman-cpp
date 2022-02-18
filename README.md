@@ -21,7 +21,7 @@ make
 
 ## Windows System  
 
-In a Windows system, a Visual Studio solution file (VS 2015) is provided. 
+In a Windows system, a Visual Studio solution file (VS 2019) is provided. 
 
 ## Dependencies
 
