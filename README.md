@@ -26,11 +26,9 @@ In a Windows system, a Visual Studio solution file (VS 2019) is provided.
 ## Dependencies
 
 This library utilizes [Armadillo](http://arma.sourceforge.net). 
-For plotting, this library uses python3-mathplotlib and libpython3.8-dev.
-In linux system, you can get all of them from your distribution repository. 
-In Windows system, all necessary precompiled libraries are provided in "windows-libs" folder. 
+In Windows system, the armadillo library is provided in "windows-libs" folder. 
 The contents of windows-libs.zip need to be first extracted. 
-In "bin" folder there are necessary DLLs (blas and lapack) to run your programs.
+In "bin" folder, there is libopenblas.dll which is necessary to run your programs. The compiled binary must be located in the same folder with libopenblas.dll.
 Armadillo itself is very easy to use. 
 More information on the Armadillo can be found [here](http://arma.sourceforge.net/docs.html).
 
