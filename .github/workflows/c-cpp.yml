@@ -19,5 +19,4 @@ jobs:
       run: cmake .
     - name: run make
       run: make
-    - name: run demo1
-      run: ./bin/demo1
+      
