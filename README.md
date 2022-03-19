@@ -1,5 +1,7 @@
 # kalman-cpp
 
+[![C/C++ CI](https://github.com/auralius/kalman-cpp/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/auralius/kalman-cpp/actions/workflows/c-cpp.yml)
+
 ## Kalman filter and extended Kalman filter implementation in C++ 
 
 Implemented filters so far: 
