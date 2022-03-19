@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: install libarmadillo-dev
+      run: sudo apt-get update && sudo apt-get install -yq libarmadillo-dev
     - name: make build directory
       run: mkdir build
     - name: change directory
@@ -21,3 +23,5 @@ jobs:
       run: cmake ..
     - name: run make
       run: make
+    - name: run demo1
+      run: ../bin/demo1
