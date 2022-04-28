@@ -12,3 +12,4 @@ simple_kalman
 *.suo
 *.ncb
 vs2015/kalman-cpp.sdf
+vs2019/.vs
