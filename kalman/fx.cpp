@@ -31,17 +31,17 @@ mat FX::JacobianAt(colvec &x, colvec &some_constants)
     colvec f0 = F_(x, some_constants);
     colvec fn;
 
-    int c = x.size();
-    int r = f0.size();
+    uword c = x.size();
+    uword r = f0.size();
     mat jac;
     jac.resize(r, c);
 
-    for (int j = 0; j < c; j++) {
+    for (uword j = 0; j < c; j++) {
         colvec x_eps = x;
         x_eps(j) = x_eps(j) + Epsilon_;
         fn = F_(x_eps, some_constants);
 
-        for (int i = 0; i < r; i++) {
+        for (uword i = 0; i < r; i++) {
             jac(i, j) = (fn(i) - f0(i)) / Epsilon_;
         }
     }
@@ -52,11 +52,11 @@ mat FX::JacobianAt(colvec &x, colvec &some_constants)
 
 mat FX::HessianAt(colvec &x, colvec &some_constants, int i)
 {
-    int n = x.size();
+    uword n = x.size();
     mat hess;
     hess.resize(n, n);
 
-    for (int j = 0; j < n; j++) {
+    for (uword j = 0; j < n; j++) {
         colvec x0 = x;
 
         x0(j) = x0(j) + Epsilon_;

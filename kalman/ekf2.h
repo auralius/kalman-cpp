@@ -21,7 +21,11 @@
 #ifndef EKF2_H
 #define EKF2_H
 
+#define ARMA_USE_LAPACK // This definition must be before the include to the armadillo
+
+
 #define _USE_MATH_DEFINES
+
 #include <math.h>
 
 #include <assert.h>
