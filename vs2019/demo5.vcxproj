@@ -103,8 +103,8 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>kalman-cpp.lib;libopenblas.lib;liblapack.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\windows-libs\lapack; ..\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kalman-cpp.lib;cbia.lib.lapack.dyn.rel.x86.12.lib;cbia.lib.blas.dyn.rel.x86.12.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\windows-libs; ..\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ManifestFile>$(IntDir)$(TargetFileName).intermediate.manifest</ManifestFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -128,7 +128,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>kalman-cpp.lib;libopenblas.lib;liblapack.lib</AdditionalDependencies>
+      <AdditionalDependencies>kalman-cpp.lib;cbia.lib.lapack.dyn.rel.x64.12.lib;cbia.lib.blas.dyn.rel.x64.12.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\windows-libs;..\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ManifestFile>$(IntDir)$(TargetFileName).intermediate.manifest</ManifestFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -152,8 +152,8 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>kalman-cpp.lib;libopenblas.lib;liblapack.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\windows-libs\lapack; ..\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kalman-cpp.lib;cbia.lib.lapack.dyn.rel.x86.12.lib;cbia.lib.blas.dyn.rel.x86.12.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\windows-libs; ..\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ManifestFile>$(IntDir)$(TargetFileName).intermediate.manifest</ManifestFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -180,7 +180,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>kalman-cpp.lib;libopenblas.lib;liblapack.lib</AdditionalDependencies>
+      <AdditionalDependencies>kalman-cpp.lib;cbia.lib.lapack.dyn.rel.x64.12.lib;cbia.lib.blas.dyn.rel.x64.12.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\windows-libs;..\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ManifestFile>$(IntDir)$(TargetFileName).intermediate.manifest</ManifestFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>

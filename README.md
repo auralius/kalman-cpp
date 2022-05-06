@@ -7,7 +7,7 @@
 Implemented filters so far: 
 * Kalman filter  
 * Extended Kalman filter  
-* Second order extended Kalman filter  
+* Second-order extended Kalman filter  
 * Unscented Kalman filter  
 
 Please use cmake to build all the codes.
@@ -29,18 +29,23 @@ In a Windows system, a Visual Studio solution file (VS 2019) is provided.
 
 This library utilizes [Armadillo](http://arma.sourceforge.net). 
 In Windows system, the armadillo library is provided in "windows-libs" folder. 
-The contents of windows-libs.zip need to be first extracted. 
-In "bin" folder, there is libopenblas.dll which is necessary to run your programs. The compiled binary must be located in the same folder with libopenblas.dll.
+**The contents of windows-libs.zip need to be first extracted.** 
 Armadillo itself is very easy to use. 
 More information on the Armadillo can be found [here](http://arma.sourceforge.net/docs.html).
+
+## blas and lapack
+By default, now kalman-cpp uses blas and lapack. For Windows machine, working with blas and lapack is a messy stuff. Thus, we will use the precompiled blas and lapack from:  https://www.fi.muni.cz/~xsvobod2/misc/lapack/. 
+
+The precompiled blas and lapack libraries are included in **windows-libs.zip**. There are four LIB files. Additionally, in "bin" folder, there are four corresponding DLL files as well. There are four files because two files are for the 32-bit platform, and the other two files are for the 64-bit platform. 
+
+**The compiled binary must always be located in the same folder as these DLL files.**
+
+
 
 ## MATLAB m-files for plotting
 
 MATLAB m-files for each example are provided in 'm-files' folder. Octave can also be used instead of MATLAB.
 
 ## Documentation
-
-See documentation [here](https://www.notion.so/kalman-cpp-90a2225b82e14d1d83fee65edd3cc97e).
-
-## Github page  
+  
 https://auralius.github.io/kalman-cpp/
