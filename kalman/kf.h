@@ -117,7 +117,13 @@ public:
   * @return Current estimated output $\hat{z}_k$
   */
   colvec* GetCurrentEstimatedOutput();
-  
+
+  /**
+   * predicts the next state of the system
+   * @return The predicted state vector
+   */
+  colvec PredictState() const;
+
 private:
   
   mat A_;      ///< System matrix
@@ -141,6 +147,7 @@ private:
   mat P_m_;    ///< State covariance after measurement update
   
   colvec z_m_; ///< Estimated output
+
 };
 
 #endif
