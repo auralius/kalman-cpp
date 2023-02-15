@@ -127,5 +127,6 @@ colvec* KF::GetCurrentEstimatedOutput()
     return &z_m_;
 }
 
-
-
+colvec KF::PredictState() const {
+    return A_ * x_m_;
+}
